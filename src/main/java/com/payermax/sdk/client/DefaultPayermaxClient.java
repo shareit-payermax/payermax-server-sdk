@@ -3,7 +3,7 @@ package com.payermax.sdk.client;
 import com.alibaba.fastjson.JSON;
 import com.payermax.sdk.config.MerchantConfig;
 import com.payermax.sdk.domain.GatewayRequest;
-import com.payermax.sdk.domain.Result;
+import com.payermax.sdk.domain.GatewayResult;
 import com.payermax.sdk.enums.ErrorCodeEnum;
 import com.payermax.sdk.exceptions.PayermaxException;
 import com.payermax.sdk.utils.RsaUtils;
@@ -11,7 +11,6 @@ import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
-import javax.management.DescriptorAccess;
 import java.io.IOException;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -54,8 +53,8 @@ public class DefaultPayermaxClient implements PayermaxClient{
             Response response = null;
             response = client.newCall(request).execute();
             String respBody = response.body().string();
-            Result result = JSON.parseObject(respBody, Result.class);
-            if(result.isSuccess()) {
+            GatewayResult gatewayResult = JSON.parseObject(respBody, GatewayResult.class);
+            if(gatewayResult.isSuccess()) {
                 checkSign(config, respBody, response.header("sign"));
             }
             return respBody;

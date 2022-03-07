@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.payermax.sdk.client.PayermaxClient;
 import com.payermax.sdk.config.MerchantConfig;
-import com.payermax.sdk.domain.Result;
+import com.payermax.sdk.domain.GatewayResult;
 import com.payermax.sdk.req.*;
 import com.payermax.sdk.resp.*;
 
@@ -39,13 +39,13 @@ public class PayApi {
      * @author raoxw
      * @date 2021/12/2 16:01
      */
-    public Result<TradePayOrderResponse> orderAndPay(TradeOrderRequest tradeOrderRequest) {
+    public GatewayResult<TradePayOrderResponse> orderAndPay(TradeOrderRequest tradeOrderRequest) {
         return this.orderAndPay(tradeOrderRequest, null);
     }
 
-    public Result<TradePayOrderResponse> orderAndPay(TradeOrderRequest tradeOrderRequest, MerchantConfig config) {
+    public GatewayResult<TradePayOrderResponse> orderAndPay(TradeOrderRequest tradeOrderRequest, MerchantConfig config) {
         String result = client.send("orderAndPay", tradeOrderRequest, config);
-        return JSON.parseObject(result, new TypeReference<Result<TradePayOrderResponse>>(){});
+        return JSON.parseObject(result, new TypeReference<GatewayResult<TradePayOrderResponse>>(){});
     }
 
     /**
@@ -55,12 +55,12 @@ public class PayApi {
      * @author raoxw
      * @date 2021/12/2 16:01
      */
-    public Result<TradeQueryResponse> orderQuery(TradeQueryRequest tradeQueryRequest, MerchantConfig config) {
+    public GatewayResult<TradeQueryResponse> orderQuery(TradeQueryRequest tradeQueryRequest, MerchantConfig config) {
         String result = client.send("orderQuery", tradeQueryRequest, config);
-        return JSON.parseObject(result, new TypeReference<Result<TradeQueryResponse>>(){});
+        return JSON.parseObject(result, new TypeReference<GatewayResult<TradeQueryResponse>>(){});
     }
 
-    public Result<TradeQueryResponse> orderQuery(TradeQueryRequest tradeQueryRequest) {
+    public GatewayResult<TradeQueryResponse> orderQuery(TradeQueryRequest tradeQueryRequest) {
         return this.orderQuery(tradeQueryRequest, null);
     }
 
@@ -70,12 +70,12 @@ public class PayApi {
      * @author raoxw
      * @date 2022/1/17 19:29
      **/
-    public Result<ApplyTokenResponse> applyToken(ApplyTokenRequest applyTokenRequest, MerchantConfig config) {
+    public GatewayResult<ApplyTokenResponse> applyToken(ApplyTokenRequest applyTokenRequest, MerchantConfig config) {
         String result = client.send("applyToken", applyTokenRequest, config);
-        return JSON.parseObject(result, new TypeReference<Result<ApplyTokenResponse>>(){});
+        return JSON.parseObject(result, new TypeReference<GatewayResult<ApplyTokenResponse>>(){});
     }
 
-    public Result<ApplyTokenResponse> applyToken(ApplyTokenRequest applyTokenRequest) {
+    public GatewayResult<ApplyTokenResponse> applyToken(ApplyTokenRequest applyTokenRequest) {
         return this.applyToken(applyTokenRequest, null);
     }
 
@@ -86,12 +86,12 @@ public class PayApi {
      * @author raoxw
      * @date 2021/12/2 20:33
      */
-    public Result<RefundApplyResponse> refund(RefundApplyRequest request, MerchantConfig config) {
+    public GatewayResult<RefundApplyResponse> refund(RefundApplyRequest request, MerchantConfig config) {
         String result = client.send("refund", request, config);
-        return JSON.parseObject(result, new TypeReference<Result<RefundApplyResponse>>(){});
+        return JSON.parseObject(result, new TypeReference<GatewayResult<RefundApplyResponse>>(){});
     }
 
-    public Result<RefundApplyResponse> refund(RefundApplyRequest request) {
+    public GatewayResult<RefundApplyResponse> refund(RefundApplyRequest request) {
         return this.refund(request);
     }
 
@@ -102,12 +102,12 @@ public class PayApi {
      * @author raoxw
      * @date 2021/12/2 20:33
      */
-    public Result<RefundQueryResponse> refundQuery(RefundQueryRequest request, MerchantConfig config) {
+    public GatewayResult<RefundQueryResponse> refundQuery(RefundQueryRequest request, MerchantConfig config) {
         String result = client.send("refundQuery", request, config);
-        return JSON.parseObject(result, new TypeReference<Result<RefundQueryResponse>>(){});
+        return JSON.parseObject(result, new TypeReference<GatewayResult<RefundQueryResponse>>(){});
     }
 
-    public Result<RefundQueryResponse> refundQuery(RefundQueryRequest request) {
+    public GatewayResult<RefundQueryResponse> refundQuery(RefundQueryRequest request) {
         return this.refundQuery(request, null);
     }
 

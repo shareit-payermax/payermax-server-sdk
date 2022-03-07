@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.payermax.sdk.api.PayApi;
 import com.payermax.sdk.client.PayermaxClient;
 import com.payermax.sdk.config.MerchantConfig;
-import com.payermax.sdk.domain.Result;
+import com.payermax.sdk.domain.GatewayResult;
 import com.payermax.sdk.req.TradeOrderRequest;
 import com.payermax.sdk.resp.TradePayOrderResponse;
 
@@ -49,7 +49,7 @@ public class App {
 
         String sss = "{\"outTradeNo\":\"RenshTest1642579353180\",\"subject\":\"this is subject\",\"totalAmount\":\"1000\",\"currency\":\"IDR\",\"country\":\"ID\",\"userId\":\"userId001\",\"language\":\"\",\"reference\":\"\",\"frontCallbackURL\":\"[http://www.qq2ddsdfsadfsdfsd.com](http://www.qq2ddsdfsadfsdfsd.com)\",\"notifyUrl\":\"http://www.noticddddasdfasdfe.com](http://www.noticddddasdfasdfe.com)\",\"paymentDetail\":{\"paymentMethod\":\"WALLET\",\"targetOrg\":\"DANA\"},\"goodsDetails\":[{\"goodsId\":\"D002\",\"goodsName\":\"韩版修身牛仔裤男\",\"quantity\":\"2\",\"price\":\"500\",\"goodsCurrency\":\"IDR\",\"showUrl\":\"[http://xxxx.light.png](http://xxxx.light.png)\"}],\"shippingInfo\":{\"firstName\":\"zhang\",\"middleName\":\"shang\",\"lastName\":\"feng\",\"phoneNo\":\"13009090980\",\"email\":\"bacde@ushareit.com\",\"address1\":\"二仙桥\",\"address2\":\"成华大道\",\"city\":\"成都市\",\"region\":\"武侯区\",\"state\":\"州\",\"country\":\"ID\",\"zipCode\":\"000000\"},\"billingInfo\":{\"firstName\":\"billingInfo-firstName\",\"middleName\":\"shang\",\"lastName\":\"feng\",\"phoneNo\":\"13009090980\",\"email\":\"bacde@ushareit.com\",\"address1\":\"二仙桥\",\"address2\":\"成华大道\",\"city\":\"成都市\",\"region\":\"武侯区\",\"state\":\"州\",\"country\":\"ID\",\"zipCode\":\"000000\"}}";
         TradeOrderRequest request = JSON.parseObject(sss, TradeOrderRequest.class);
-        Result<TradePayOrderResponse> resp = payApi.orderAndPay(request);
+        GatewayResult<TradePayOrderResponse> resp = payApi.orderAndPay(request);
         System.out.println(resp);
 
 

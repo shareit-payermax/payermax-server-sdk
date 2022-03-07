@@ -2,24 +2,24 @@ package com.payermax.sdk.domain;
 
 import java.io.Serializable;
 
-public class Result<T> implements Serializable {
+public class GatewayResult<T> implements Serializable {
     private String code;
     private String msg;
     private T data;
 
-    public Result() {
+    public GatewayResult() {
     }
 
-    public Result(T data) {
+    public GatewayResult(T data) {
         this.data = data;
     }
 
-    public Result(String msg, String code) {
+    public GatewayResult(String msg, String code) {
         this.msg = msg;
         this.code = code;
     }
 
-    public Result(T data, String msg, String code) {
+    public GatewayResult(T data, String msg, String code) {
         this.msg = msg;
         this.code = code;
         this.data = data;
@@ -49,7 +49,7 @@ public class Result<T> implements Serializable {
         this.msg = msg;
     }
 
-    public Result<T> mapper(Result<?> biz) {
+    public GatewayResult<T> mapper(GatewayResult<?> biz) {
         this.setCode(biz.getCode());
         this.setMsg(biz.getMsg());
         return this;

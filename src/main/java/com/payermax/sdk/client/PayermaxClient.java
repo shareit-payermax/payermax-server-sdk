@@ -5,8 +5,8 @@ package com.payermax.sdk.client;
  */
 public interface PayermaxClient {
 
-    public static final PayermaxClient client = new DefaultPayermaxClient();
-    public static PayermaxClient getInstance() {
+    PayermaxClient client = new DefaultPayermaxClient();
+    static PayermaxClient getInstance() {
         return client;
     }
 
@@ -15,8 +15,8 @@ public interface PayermaxClient {
      * @param request
      * @return
      */
-    public String send(String apiName, Object request);
-    public String send(String apiName, Object request, String merchantNo);
+    String send(String apiName, Object request);
+    String send(String apiName, Object request, String merchantNo);
 
     /**
      * 验证签名比如paymer回调进行签名验证
@@ -24,8 +24,8 @@ public interface PayermaxClient {
      * @param sign
      * @return
      */
-    public boolean verifySign(String body, String sign);
-    public boolean verifySign(String body, String sign, String merchantNo);
+    boolean verifySign(String body, String sign);
+    boolean verifySign(String body, String sign, String merchantNo);
 
 
 

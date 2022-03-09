@@ -1,5 +1,8 @@
 package com.payermax.sdk.req;
 
+import com.payermax.sdk.api.BaseRequest;
+import com.payermax.sdk.resp.RefundQueryResponse;
+
 import java.io.Serializable;
 
 /**
@@ -8,7 +11,7 @@ import java.io.Serializable;
  * @date 2021/12/1 20:08
  * @return
  **/
-public class RefundQueryRequest implements Serializable {
+public class RefundQueryRequest extends BaseRequest<RefundQueryResponse> implements Serializable {
     /**
      * 退款申请号【特殊可选-和退款交易单号字段有一个必输】
      *
@@ -36,5 +39,10 @@ public class RefundQueryRequest implements Serializable {
 
     public void setRefundTradeNo(String refundTradeNo) {
         this.refundTradeNo = refundTradeNo;
+    }
+
+    @Override
+    protected String getApiName() {
+        return "refundQuery";
     }
 }

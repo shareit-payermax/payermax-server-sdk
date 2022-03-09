@@ -3,6 +3,7 @@ package com.payermax.sdk.enums;
 public enum ErrorCodeEnum {
 
     SIGN_CHECK_INCORRECT("SIGN_CHECK_INCORRECT", "sign check incorrect"),
+    PARAMS_INVALID("PARAMS_INVALID", ""),
     ;
 
     private String code;

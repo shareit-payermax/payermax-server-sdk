@@ -1,5 +1,8 @@
 package com.payermax.sdk.req;
 
+import com.payermax.sdk.api.BaseRequest;
+import com.payermax.sdk.resp.ApplyTokenResponse;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +10,7 @@ import java.io.Serializable;
  * @date 2022/1/17 19:28
  * @description
  **/
-public class ApplyTokenRequest implements Serializable {
+public class ApplyTokenRequest extends BaseRequest<ApplyTokenResponse> implements Serializable {
 
     private static final long serialVersionUID = 639088064924524423L;
     /**
@@ -49,5 +52,10 @@ public class ApplyTokenRequest implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    protected String getApiName() {
+        return "applyToken";
     }
 }

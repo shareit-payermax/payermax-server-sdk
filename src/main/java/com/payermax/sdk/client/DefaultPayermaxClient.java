@@ -1,6 +1,7 @@
 package com.payermax.sdk.client;
 
 import com.alibaba.fastjson.JSON;
+import com.payermax.sdk.config.GlobalMerchantConfig;
 import com.payermax.sdk.config.MerchantConfig;
 import com.payermax.sdk.domain.GatewayRequest;
 import com.payermax.sdk.domain.GatewayResult;
@@ -8,7 +9,6 @@ import com.payermax.sdk.enums.ErrorCodeEnum;
 import com.payermax.sdk.exceptions.PayermaxException;
 import com.payermax.sdk.utils.RsaUtils;
 import okhttp3.*;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.io.IOException;
@@ -27,22 +27,16 @@ public class DefaultPayermaxClient implements PayermaxClient{
             .callTimeout(15L, TimeUnit.SECONDS)
             .build();
 
-    private MerchantConfig defaultConfig;
-
-    public DefaultPayermaxClient(MerchantConfig config) {
-        this.defaultConfig = config;
-    }
-
     @Override
     public String send(String apiName, Object busData) {
         return this.send(apiName, busData, null);
     }
 
     @Override
-    public String send(String apiName, Object busData, MerchantConfig customerConfig) {
+    public String send(String apiName, Object busData, String merchantNo) {
 
         try {
-            MerchantConfig config = getConfig(customerConfig);
+            MerchantConfig config = GlobalMerchantConfig.getConfig(merchantNo);
             String reqString = buildReqString(config, busData);
             RequestBody body = RequestBody.create(reqString, JSON_TYPE);
             Request request = new Request.Builder()
@@ -69,8 +63,8 @@ public class DefaultPayermaxClient implements PayermaxClient{
         return this.verifySign(body, sign, null);
     }
     @Override
-    public boolean verifySign(String body, String sign, MerchantConfig customerConfig) {
-        MerchantConfig config = getConfig(customerConfig);
+    public boolean verifySign(String body, String sign, String merchantNo) {
+        MerchantConfig config = GlobalMerchantConfig.getConfig(merchantNo);
         return RsaUtils.verify(body, sign, config.getPayermaxPublicKey(), RsaUtils.CHAR_SET);
     }
 
@@ -94,37 +88,5 @@ public class DefaultPayermaxClient implements PayermaxClient{
                 throw new PayermaxException(ErrorCodeEnum.SIGN_CHECK_INCORRECT);
             }
         }
-    }
-
-    private MerchantConfig getConfig(MerchantConfig customerConfig) {
-        if(customerConfig == null) {
-            return this.defaultConfig;
-        }
-
-        if(StringUtils.isEmpty(customerConfig.getPayerMaxBaseUrl())) {
-            customerConfig.setPayerMaxBaseUrl(defaultConfig.getPayerMaxBaseUrl());
-        }
-
-        if(StringUtils.isEmpty(customerConfig.getMerchantPrivateKey())) {
-            customerConfig.setMerchantPrivateKey(defaultConfig.getMerchantPrivateKey());
-        }
-
-        if(StringUtils.isEmpty(customerConfig.getPayermaxPublicKey())) {
-            customerConfig.setPayermaxPublicKey(defaultConfig.getPayermaxPublicKey());
-        }
-
-        if(StringUtils.isEmpty(customerConfig.getMerchantNo())) {
-            customerConfig.setMerchantNo(defaultConfig.getMerchantNo());
-        }
-
-        if(StringUtils.isEmpty(customerConfig.getMerchantAppId())) {
-            customerConfig.setMerchantAppId(defaultConfig.getMerchantAppId());
-        }
-
-        if(!customerConfig.getCheckSign()) {
-            customerConfig.setCheckSign(Boolean.FALSE);
-        }
-
-        return customerConfig;
     }
 }

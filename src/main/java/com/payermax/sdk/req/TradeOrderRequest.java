@@ -1,5 +1,8 @@
 package com.payermax.sdk.req;
 
+import com.payermax.sdk.api.BaseRequest;
+import com.payermax.sdk.resp.TradePayOrderResponse;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.List;
  * @date 2021/12/1 20:08
  * @return
  **/
-public class TradeOrderRequest implements Serializable{
+public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable{
     /**
      * 商户订单号
      *
@@ -112,6 +115,11 @@ public class TradeOrderRequest implements Serializable{
      * 信用卡账单信息--【电商场景必输】
      */
     private BillingInfo billingInfo;
+
+    @Override
+    protected String getApiName() {
+        return "orderAndPay";
+    }
 
     public String getOutTradeNo() {
         return outTradeNo;

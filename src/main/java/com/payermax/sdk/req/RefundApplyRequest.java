@@ -1,16 +1,18 @@
 package com.payermax.sdk.req;
 
+import com.payermax.sdk.api.BaseRequest;
+import com.payermax.sdk.resp.RefundApplyResponse;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
+/**退款申请
  * @param
  * @author raoxw
  * @date 2021/12/1 20:08
  * @return
  **/
-
-public class RefundApplyRequest implements Serializable {
+public class RefundApplyRequest extends BaseRequest<RefundApplyResponse> implements Serializable {
     private static final long serialVersionUID = 3274773109795706046L;
     /**
      * 商户退款申请号
@@ -109,5 +111,10 @@ public class RefundApplyRequest implements Serializable {
 
     public void setRefundType(Integer refundType) {
         this.refundType = refundType;
+    }
+
+    @Override
+    protected String getApiName() {
+        return "refund";
     }
 }

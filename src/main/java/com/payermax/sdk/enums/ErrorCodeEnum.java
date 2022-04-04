@@ -1,32 +1,43 @@
 package com.payermax.sdk.enums;
 
+/**
+ * @author zhu.q
+ */
 public enum ErrorCodeEnum {
 
-    SIGN_CHECK_INCORRECT("SIGN_CHECK_INCORRECT", "sign check incorrect"),
-    PARAMS_INVALID("PARAMS_INVALID", ""),
+    /**
+     * CONFIG_INVALID
+     */
+    CONFIG_INVALID("merchant config invalid"),
+
+    /**
+     * check sign error
+     */
+    CHECK_SIGN_ERROR("check sign error"),
+
+    /**
+     * invoke error
+     */
+    INVOKE_ERROR("invoke error"),
+
+    /**
+     * PARAMS_INVALID
+     */
+    PARAMS_INVALID(""),
     ;
 
-    private String code;
-    private String msg;
+    private final String msg;
 
-    ErrorCodeEnum(String code, String msg) {
-        this.code = code;
+    ErrorCodeEnum(String msg) {
         this.msg = msg;
     }
 
     public String getCode() {
-        return code;
+        return name();
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getMsg() {
         return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 }

@@ -12,52 +12,51 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GlobalMerchantConfig {
 
-    private static Map<String, MerchantConfig> merchantMap = new ConcurrentHashMap<>();
+    private static MerchantConfig DEFAULT_MERCHANT_CONFIG = null;
+
+    private static final Map<String, MerchantConfig> MERCHANT_CONFIG_MAP = new ConcurrentHashMap<>();
+
+
+    public static void setDefaultConfig(MerchantConfig defaultMerchantConfig) {
+        DEFAULT_MERCHANT_CONFIG = defaultMerchantConfig;
+        MERCHANT_CONFIG_MAP.put(defaultMerchantConfig.getMerchantNo(), defaultMerchantConfig);
+    }
 
     public static void addConfig(MerchantConfig config) {
         if (StringUtils.isEmpty(config.getMerchantNo())) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "merchantNo is null");
+            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantNo is empty");
         }
         if (StringUtils.isEmpty(config.getMerchantAppId())) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "merchantAppId is null");
+            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantAppId is empty");
         }
         if (StringUtils.isEmpty(config.getMerchantPrivateKey())) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "merchantPrivateKey is null");
+            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantPrivateKey is empty");
         }
         if (StringUtils.isEmpty(config.getPayermaxPublicKey())) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "payermaxPublicKey is null");
+            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "payermaxPublicKey is empty");
         }
-        if (StringUtils.isEmpty(config.getPayerMaxBaseUrl())) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "payermaxBaseUrl is null");
+        MERCHANT_CONFIG_MAP.put(config.getMerchantNo(), config);
+    }
+
+    public static MerchantConfig getDefaultConfig() {
+        if (DEFAULT_MERCHANT_CONFIG == null) {
+            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "default merchant config is null");
         }
-        merchantMap.put(config.getMerchantNo(), config);
+        return DEFAULT_MERCHANT_CONFIG;
     }
 
     public static MerchantConfig getConfig(String merchantNo) {
 
-        if(StringUtils.isEmpty(merchantNo)) {
-            return getDefaultConfig();
+        if (StringUtils.isEmpty(merchantNo)) {
+            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID, "merchantNo is empty");
         }
 
-        MerchantConfig merchantConfig = merchantMap.get(merchantNo);
-        if(merchantConfig == null) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "找不到商户配置信息");
+        MerchantConfig merchantConfig = MERCHANT_CONFIG_MAP.get(merchantNo);
+        if (merchantConfig == null) {
+            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID,
+                    "can not find merchant config by merchantNo:" + merchantNo);
         }
         return merchantConfig;
     }
-
-    public static MerchantConfig getDefaultConfig() {
-        if (merchantMap.size() == 1) {
-            return merchantMap.entrySet().iterator().next().getValue();
-        }
-
-        if(merchantMap.size() > 1) {
-            throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "多商户配置请传递对应的商户号");
-        }
-
-        //<=1
-        throw new PayermaxException(ErrorCodeEnum.PARAMS_INVALID.getCode(), "请配置商户信息");
-    }
-
 
 }

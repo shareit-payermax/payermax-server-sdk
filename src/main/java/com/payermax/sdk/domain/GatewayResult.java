@@ -2,7 +2,12 @@ package com.payermax.sdk.domain;
 
 import java.io.Serializable;
 
+/**
+ * @param <T>
+ * @author zhu.q
+ */
 public class GatewayResult<T> implements Serializable {
+    public static final String APPLY_SUCCESS = "APPLY_SUCCESS";
     private String code;
     private String msg;
     private T data;
@@ -56,9 +61,10 @@ public class GatewayResult<T> implements Serializable {
     }
 
     public boolean isSuccess() {
-        return "APPLY_SUCCESS".equals(this.code);
+        return APPLY_SUCCESS.equals(this.code);
     }
 
+    @Override
     public String toString() {
         return "Result{code='" + this.code + '\'' + ", msg='" + this.msg + '\'' + ", data=" + this.data + '}';
     }

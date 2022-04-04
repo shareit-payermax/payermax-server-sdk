@@ -8,37 +8,30 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @param
  * @author raoxw
  * @date 2021/12/1 20:08
- * @return
  **/
-public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable{
+public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable {
     /**
      * 商户订单号
      *
-     * @mock Test20211124000000039
      */
     private String outTradeNo;
 
     /**
      * 订单金额
-     *
-     * @mock 1000
+     * 单位：元
      */
     private BigDecimal totalAmount;
 
     /**
-     * 订单币种
-     *
-     * @mock IDR
+     * 订单币种，例如 ：IDR
      */
     private String currency;
 
     /**
      * 订单标题
      *
-     * @mock 简约灯具
      */
     private String subject;
 
@@ -50,49 +43,41 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     /**
      * 商户指定的跳转URL，用户完成支付后会被跳转到该地址
      *
-     * @mock http://wwww.baidu.com
      */
     private String frontCallbackURL;
 
     /**
      * 国家代码
      *
-     * @mock ID
      */
     private String country;
 
     /**
      * 商户用户id
-     *
-     * @mock TestUser001
      */
     String userId;
 
     /**
      * 【流量切换使用】订单相对超时时间
      *
-     * @mock 1800
      */
     private Integer timeoutExpress;
 
     /**
      * 服务端支付结果通知URL地址
      *
-     * @mock http://www.notice.com
      */
     private String notifyUrl;
 
     /**
      * 附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用
      *
-     * @mock test
      */
     private String reference;
 
     /**
      * 语言
      *
-     * @mock en
      */
     private String language;
 
@@ -102,7 +87,7 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     private List<GoodsDetailItem> goodsDetails;
 
     /**
-     * 配送信息--【电商场景必输】
+     * 配送信息--【电商场景必填】
      */
     private ShippingInfo shippingInfo;
 
@@ -112,7 +97,7 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     private OutUserInfo buyerInfo;
 
     /**
-     * 信用卡账单信息--【电商场景必输】
+     * 信用卡账单信息--【电商场景必填】
      */
     private BillingInfo billingInfo;
 
@@ -255,13 +240,11 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 支付方式（跟踪产品，将支付方式改为编码）
          *
-         * @mock: P00010
          */
         String paymentMethod;
         /**
          * 目标机构（跟踪产品，将支付方式改为编码）
          *
-         * @mock 10000036
          */
         String targetOrg;
 
@@ -271,7 +254,7 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         List<PayAccountInfo> payAccountInfo;
 
         /**
-         * 卡信息--【电商场景必输】
+         * 卡信息--【电商场景必填】
          */
         CardInfo cardInfo;
 
@@ -327,13 +310,11 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 账户类型（EMAIL,PHONE,ID，CARD）
          *
-         * @mock PHONE
          */
         String accountNoType;
         /**
          * 账户号--accountType类型是EMAIL,PHONE,ID
          *
-         * @mock 123456789
          */
         String accountNo;
         /**

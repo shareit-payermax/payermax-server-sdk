@@ -6,42 +6,33 @@ import com.payermax.sdk.resp.RefundApplyResponse;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**退款申请
- * @param
+/**
+ * 退款申请
+ *
  * @author raoxw
  * @date 2021/12/1 20:08
- * @return
  **/
 public class RefundApplyRequest extends BaseRequest<RefundApplyResponse> implements Serializable {
     private static final long serialVersionUID = 3274773109795706046L;
     /**
      * 商户退款申请号
-     *
-     * @mock RE2021111814340001
      */
     private String outRefundNo;
     /**
      * 商户订单号
-     *
-     * @mock MO20211118000001
      */
     private String outTradeNo;
     /**
      * 退款金额
-     *
-     * @mock 1000
+     * 单位：元
      */
     private BigDecimal refundAmount;
     /**
      * 退款币种
-     *
-     * @mock IDR
      */
     private String refundCurrency;
     /**
      * 退款回调地址
-     *
-     * @mock http://www.refund.xxx
      */
     private String refundNotifyUrl;
     /**

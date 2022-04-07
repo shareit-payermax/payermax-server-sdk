@@ -5,11 +5,6 @@ package com.payermax.sdk.config;
  */
 public class MerchantConfig {
 
-    public static final String SAND_BOX_URL = "https://pay-gate-uat.payermax.com/aggregate-pay/api/gateway";
-    public static final String LIVE_URL = "https://pay-gate.payermax.com/aggregate-pay/api/gateway";
-
-    private String payerMaxBaseUrl;
-
     private String merchantPrivateKey;
 
     private String payermaxPublicKey;
@@ -18,8 +13,7 @@ public class MerchantConfig {
 
     private String merchantNo;
 
-    private Boolean checkSign = Boolean.TRUE;
-
+    private boolean needCheckSign = true;
 
     public String getMerchantAppId() {
         return merchantAppId;
@@ -37,20 +31,12 @@ public class MerchantConfig {
         this.merchantNo = merchantNo;
     }
 
-    public Boolean getCheckSign() {
-        return checkSign;
+    public boolean isNeedCheckSign() {
+        return needCheckSign;
     }
 
-    public void setCheckSign(Boolean checkSign) {
-        this.checkSign = checkSign;
-    }
-
-    public String getPayerMaxBaseUrl() {
-        return payerMaxBaseUrl;
-    }
-
-    public void setPayerMaxBaseUrl(String payerMaxBaseUrl) {
-        this.payerMaxBaseUrl = payerMaxBaseUrl;
+    public void setNeedCheckSign(boolean needCheckSign) {
+        this.needCheckSign = needCheckSign;
     }
 
     public String getMerchantPrivateKey() {
@@ -71,7 +57,6 @@ public class MerchantConfig {
 
 
     public static final class Builder {
-        private String payerMaxBaseUrl;
         private String merchantPrivateKey;
         private String payermaxPublicKey;
         private String merchantAppId;
@@ -83,11 +68,6 @@ public class MerchantConfig {
 
         public static Builder builder() {
             return new Builder();
-        }
-
-        public Builder payerMaxBaseUrl(String payerMaxBaseUrl) {
-            this.payerMaxBaseUrl = payerMaxBaseUrl;
-            return this;
         }
 
         public Builder merchantPrivateKey(String merchantPrivateKey) {
@@ -117,12 +97,11 @@ public class MerchantConfig {
 
         public MerchantConfig build() {
             MerchantConfig payermaxMerchantConfig = new MerchantConfig();
-            payermaxMerchantConfig.setPayerMaxBaseUrl(payerMaxBaseUrl);
             payermaxMerchantConfig.setMerchantPrivateKey(merchantPrivateKey);
             payermaxMerchantConfig.setPayermaxPublicKey(payermaxPublicKey);
             payermaxMerchantConfig.setMerchantAppId(merchantAppId);
             payermaxMerchantConfig.setMerchantNo(merchantNo);
-            payermaxMerchantConfig.setCheckSign(checkSign);
+            payermaxMerchantConfig.setNeedCheckSign(checkSign);
             return payermaxMerchantConfig;
         }
     }

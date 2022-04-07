@@ -1,33 +1,47 @@
 package com.payermax.sdk.client;
 
+import com.payermax.sdk.enums.Env;
+
 /**
- *
+ * @author zhu.q
  */
 public interface PayermaxClient {
 
-    PayermaxClient client = new DefaultPayermaxClient();
-    static PayermaxClient getInstance() {
-        return client;
-    }
+    /**
+     * set env
+     *
+     * @param env env
+     */
+    void setEnv(Env env);
 
     /**
-     * 请求payermax处理类，并负责加签、验签
-     * @param request
-     * @return
+     * Send the request with the default merchantNo
+     * use default merchant config
+     *
+     * @param apiName apiName
+     * @param request requestObject
+     * @return json content
      */
     String send(String apiName, Object request);
+
+    /**
+     * Use the specified merchantNO to send the request, when you have multiple merchantNo, please use this method to
+     * send request.
+     *
+     * @param apiName    apiName
+     * @param request    requestObject
+     * @param merchantNo merchantNo
+     * @return json content
+     */
     String send(String apiName, Object request, String merchantNo);
 
     /**
-     * 验证签名比如paymer回调进行签名验证
-     * @param body
-     * @param sign
-     * @return
+     * used to verify the notification come from payermax
+     *
+     * @param body notification's http body content
+     * @param sign the signature in http header
+     * @return verify result
      */
-    boolean verifySign(String body, String sign);
-    boolean verifySign(String body, String sign, String merchantNo);
-
-
-
+    boolean verifyNotification(String body, String sign);
 
 }

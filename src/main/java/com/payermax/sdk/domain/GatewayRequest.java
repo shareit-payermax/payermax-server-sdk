@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 /**
  * 网关请求领域模型 新架构
- * @design zhanglong
+ *
  * @author zhu.q
+ * @author zhanglong
  */
 public class GatewayRequest implements Serializable {
     /**

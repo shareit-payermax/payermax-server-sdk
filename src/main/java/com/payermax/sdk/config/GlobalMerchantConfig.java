@@ -23,9 +23,6 @@ public class GlobalMerchantConfig {
     }
 
     public static void addConfig(MerchantConfig config) {
-        if (StringUtils.isEmpty(config.getMerchantNo())) {
-            throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantNo is empty");
-        }
         if (StringUtils.isEmpty(config.getMerchantAppId())) {
             throw new PayermaxException(ErrorCodeEnum.CONFIG_INVALID, "merchantAppId is empty");
         }

@@ -3,15 +3,11 @@ package com.payermax.sdk.resp;
 import java.io.Serializable;
 
 /**
- * @Author: raoxw
- * @date 2022/1/17 19:29
- * @description
+ * @author raoxw
  **/
 public class ApplyTokenResponse implements Serializable {
     /**
      * 隐藏页面地址，在Iframe框中隐藏打开
-     *
-     * @mock http://paymax.xxx.com
      */
     private String secureUrl;
 

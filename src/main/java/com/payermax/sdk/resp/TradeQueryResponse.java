@@ -6,27 +6,19 @@ import java.util.List;
 
 /**
  * @author raoxw
- * @date 2021/12/2 20:10
- * @description
  **/
 
 public class TradeQueryResponse implements Serializable {
     /**
      * 商户订单号
-     *
-     * @mock MO20211118000001
      */
     private String outTradeNo;
     /**
      * 交易单号
-     *
-     * @mock 20201112400101244339
      */
     private String tradeOrderNo;
     /**
      * 交易单号
-     *
-     * @mock 20201112400101244339
      */
     private String tradeToken;
     /**
@@ -35,20 +27,14 @@ public class TradeQueryResponse implements Serializable {
     private BigDecimal totalAmount;
     /**
      * 交易币种
-     *
-     * @mock IDR
      */
     private String currency;
     /**
      * 交易订单状态(PENDING,SUCCESS,FAILED,CLOSE)
-     *
-     * @mock SUCCESS
      */
     private String status;
     /**
      * 国家
-     *
-     * @mock ID
      */
     private String country;
     /**
@@ -147,53 +133,37 @@ public class TradeQueryResponse implements Serializable {
         private static final long serialVersionUID = -3706297312399101958L;
         /**
          * 支付方式
-         *
-         * @mock P00010
          */
         private String paymentMethod;
         /**
          * 目标机构
-         *
-         * @mock 10000036
          */
         private String targetOrg;
 
         /**
          * 卡组织
-         *
-         * @mock VISA
          */
         private String cardOrg;
         /**
          * 支付金额
-         *
-         * @mock 1000
          */
         private BigDecimal payAmount;
         /**
          * 支付币种
-         *
-         * @mock IDR
          */
         private String payCurrency;
 
         /**
          * 国家代码
-         *
-         * @mock ID
          */
         private String country;
         /**
          * 支付方式类型
-         *
-         * @mock
          */
         private String paymentMethodType;
 
         /**
          * 卡信息
-         *
-         * @mock
          */
         private CardInfo cardInfo;
 

@@ -76,8 +76,7 @@ public class RsaUtils {
     /**
      * 生成密钥对
      *
-     * @return
-     * @throws Exception
+     * @return Map
      */
     public static Map<String, String> createKeyPair() {
         //使用RSA算法获得密钥对生成器对象keyPairGenerator

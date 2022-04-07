@@ -10,7 +10,6 @@ import java.math.BigDecimal;
  * 退款申请
  *
  * @author raoxw
- * @date 2021/12/1 20:08
  **/
 public class RefundApplyRequest extends BaseRequest<RefundApplyResponse> implements Serializable {
     private static final long serialVersionUID = 3274773109795706046L;
@@ -37,8 +36,6 @@ public class RefundApplyRequest extends BaseRequest<RefundApplyResponse> impleme
     private String refundNotifyUrl;
     /**
      * 退款说明（商户用户退款理由）
-     *
-     * @mock 7天无理由
      */
     private String comments;
     /**

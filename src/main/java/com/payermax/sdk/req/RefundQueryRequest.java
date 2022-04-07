@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * @author raoxw
- * @date 2021/12/1 20:08
  **/
 public class RefundQueryRequest extends BaseRequest<RefundQueryResponse> implements Serializable {
     /**

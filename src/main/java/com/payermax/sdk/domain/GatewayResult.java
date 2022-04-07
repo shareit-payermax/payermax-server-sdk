@@ -3,7 +3,6 @@ package com.payermax.sdk.domain;
 import java.io.Serializable;
 
 /**
- * @param <T>
  * @author zhu.q
  */
 public class GatewayResult<T> implements Serializable {

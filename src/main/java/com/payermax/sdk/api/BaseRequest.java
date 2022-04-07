@@ -23,7 +23,7 @@ public abstract class BaseRequest<RESP> {
     /**
      * 接口名称
      *
-     * @return
+     * @return api name
      */
     protected abstract String getApiName();
 }

@@ -4,29 +4,21 @@ import java.io.Serializable;
 
 /**
  * @author raoxw
- * @date 2021/12/2 20:30
- * @description
  **/
 public class RefundApplyResponse implements Serializable {
 
     private static final long serialVersionUID = -8306500846105063312L;
     /**
      * 商户退款申请号
-     *
-     * @mock RE2021111814340001
      */
     private String outRefundNo;
     /**
      * 退款订单号
-     *
-     * @mock RE2021111814410001
      */
     private String refundTradeNo;
 
     /**
      * 原始交易单号
-     *
-     * @mock 20201112400101244339
      */
     private String tradeOrderNo;
 

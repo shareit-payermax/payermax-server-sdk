@@ -7,14 +7,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * @author raoxw
- * @date 2021/12/1 20:08
- **/
 public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable {
     /**
      * 商户订单号
-     *
      */
     private String outTradeNo;
 
@@ -31,7 +26,6 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
     /**
      * 订单标题
-     *
      */
     private String subject;
 
@@ -42,13 +36,11 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
     /**
      * 商户指定的跳转URL，用户完成支付后会被跳转到该地址
-     *
      */
     private String frontCallbackURL;
 
     /**
      * 国家代码
-     *
      */
     private String country;
 
@@ -59,25 +51,21 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
     /**
      * 【流量切换使用】订单相对超时时间
-     *
      */
     private Integer timeoutExpress;
 
     /**
      * 服务端支付结果通知URL地址
-     *
      */
     private String notifyUrl;
 
     /**
      * 附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用
-     *
      */
     private String reference;
 
     /**
      * 语言
-     *
      */
     private String language;
 
@@ -239,12 +227,10 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         private static final long serialVersionUID = -7937394894543296555L;
         /**
          * 支付方式（跟踪产品，将支付方式改为编码）
-         *
          */
         String paymentMethod;
         /**
          * 目标机构（跟踪产品，将支付方式改为编码）
-         *
          */
         String targetOrg;
 
@@ -309,12 +295,10 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         private static final long serialVersionUID = 7910969920253946128L;
         /**
          * 账户类型（EMAIL,PHONE,ID，CARD）
-         *
          */
         String accountNoType;
         /**
          * 账户号--accountType类型是EMAIL,PHONE,ID
-         *
          */
         String accountNo;
         /**
@@ -429,40 +413,28 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         private static final long serialVersionUID = 6715003596934540820L;
         /**
          * 商品编号
-         *
-         * @mock D002
          */
         String goodsId;
         /**
          * 商品名称
-         *
-         * @mock 韩版修身牛仔裤男
          */
         String goodsName;
         /**
          * 商品数量
-         *
-         * @mock 2
          */
         String quantity;
         /**
          * 商品单价,单位：元
-         *
-         * @mock 500
          */
         String price;
 
         /**
          * 商品报价币种
-         *
-         * @mock ID
          */
         String goodsCurrency;
 
         /**
          * 商品展示地址
-         *
-         * @mock http://xxxx.light.png
          */
         String showUrl;
 
@@ -521,50 +493,34 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
         /**
          * 配送email
-         *
-         * @mock abc@ushareit.com
          */
         String email;
         /**
          * 配送人first姓名
-         *
-         * @mock 张
          */
         String firstName;
         /**
          * 配送人middle姓名
-         *
-         * @mock 三
          */
         String middleName;
         /**
          * 配送人last姓名
-         *
-         * @mock 丰
          */
         String lastName;
         /**
          * 配送地址1
-         *
-         * @mock 二仙桥
          */
         String address1;
         /**
          * 配送地址2
-         *
-         * @mock 成华大道
          */
         String address2;
         /**
          * 配送地址所在城市
-         *
-         * @mock 成都市
          */
         String city;
         /**
          * 配送地址所在区域
-         *
-         * @mock 武侯区
          */
         String region;
         /**
@@ -573,20 +529,14 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         String state;
         /**
          * 配送所在国家
-         *
-         * @mock 中国
          */
         String country;
         /**
          * 配送地邮编
-         *
-         * @mock 000000
          */
         String zipCode;
         /**
          * 配送人手机
-         *
-         * @mock 13009090980
          */
         String phoneNo;
 
@@ -692,62 +642,42 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         private static final long serialVersionUID = 8687545027478296178L;
         /**
          * 名
-         *
-         * @mock 凡
          */
         String firstName;
         /**
          * 中间名
-         *
-         * @mock 亦
          */
         String middleName;
         /**
          * 姓
-         *
-         * @mock 吴
          */
         String lastName;
         /**
          * 用户邮箱
-         *
-         * @mock test@123.com
          */
         String email;
         /**
          * 用户手机号
-         *
-         * @mock 13119090980
          */
         String phoneNo;
         /**
          * 用户证件类型（IDCARD PASSPORT DNI T.C.KimlikNo.）
-         *
-         * @mock IDCARD
          */
         String idType;
         /**
          * 用户证件号
-         *
-         * @mock 158485664684848677456
          */
         String taxNo;
         /**
          * 用户所在区域
-         *
-         * @mock 朝阳区
          */
         String region;
         /**
          * 用户所在城市
-         *
-         * @mock 北京市
          */
         String city;
         /**
          * 用户详细地址
-         *
-         * @mock 北京市朝阳区看守所
          */
         String address;
         /**

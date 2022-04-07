@@ -9,7 +9,6 @@ import java.io.Serializable;
  * 交易查询
  *
  * @author raoxw
- * @date 2021/12/1 20:08
  **/
 public class TradeQueryRequest extends BaseRequest<TradeQueryResponse> implements Serializable {
 

@@ -1,5 +1,13 @@
 # PayerMAX Server sdk
 
+```xml
+<dependency>
+  <groupId>com.payermax</groupId>
+  <artifactId>payermax-server-sdk</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 ## Init Config
 
 ```java

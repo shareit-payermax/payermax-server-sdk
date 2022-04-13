@@ -94,7 +94,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
                 throw new PayermaxException(ErrorCodeEnum.INVOKE_ERROR);
             }
             String respBody = responseBody.string();
-            GatewayResult gatewayResult = JSON.parseObject(respBody, GatewayResult.class);
+            GatewayResult<?> gatewayResult = JSON.parseObject(respBody, GatewayResult.class);
             if (gatewayResult.isSuccess()) {
                 checkSign(config, respBody, response.header(HEADER_SIGN));
             }

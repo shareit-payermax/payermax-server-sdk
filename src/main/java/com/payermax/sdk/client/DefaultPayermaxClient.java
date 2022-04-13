@@ -26,6 +26,8 @@ public class DefaultPayermaxClient implements PayermaxClient {
     public static final MediaType JSON_TYPE = MediaType.get("application/json; charset=utf-8");
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String HEADER_SIGN = "sign";
+    public static final String HEADER_SDK_VER = "sdk-ver";
+    public static final String SDK_VER = "1.0.0";
 
     private String baseUrl;
 
@@ -84,7 +86,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
             String reqString = buildReqString(config, busData);
             RequestBody requestBody = RequestBody.create(reqString, JSON_TYPE);
             Request request = new Request.Builder()
-                    .header(HEADER_SIGN, calcSign(config, reqString))
+                    .header(HEADER_SIGN, calcSign(config, reqString)).header(HEADER_SDK_VER, SDK_VER)
                     .url(this.baseUrl.concat("/").concat(apiName))
                     .post(requestBody)
                     .build();

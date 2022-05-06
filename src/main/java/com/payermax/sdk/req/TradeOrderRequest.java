@@ -17,7 +17,7 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
      * 订单金额
      * 单位：元
      */
-    private BigDecimal totalAmount;
+    private String totalAmount;
 
     /**
      * 订单币种，例如 ：IDR
@@ -48,11 +48,6 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
      * 商户用户id
      */
     String userId;
-
-    /**
-     * 【流量切换使用】订单相对超时时间
-     */
-    private Integer timeoutExpress;
 
     /**
      * 服务端支付结果通知URL地址
@@ -102,11 +97,11 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         this.outTradeNo = outTradeNo;
     }
 
-    public BigDecimal getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -156,14 +151,6 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public Integer getTimeoutExpress() {
-        return timeoutExpress;
-    }
-
-    public void setTimeoutExpress(Integer timeoutExpress) {
-        this.timeoutExpress = timeoutExpress;
     }
 
     public String getNotifyUrl() {

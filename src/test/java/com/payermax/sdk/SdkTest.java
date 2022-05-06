@@ -63,7 +63,7 @@ public class SdkTest {
         TradeOrderRequest request = new TradeOrderRequest();
         request.setOutTradeNo("out41254125412");
         request.setSubject("this is subject");
-        request.setTotalAmount(new BigDecimal(10000));
+        request.setTotalAmount("10000");
         request.setCurrency("IDR");
         request.setCountry("ID");
         request.setUserId("test userId");

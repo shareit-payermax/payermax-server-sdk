@@ -9,7 +9,9 @@ import com.payermax.sdk.config.MerchantConfig;
 import com.payermax.sdk.domain.GatewayResult;
 import com.payermax.sdk.enums.Env;
 import com.payermax.sdk.req.TradeOrderRequest;
+import com.payermax.sdk.req.TradeQueryRequest;
 import com.payermax.sdk.resp.TradePayOrderResponse;
+import com.payermax.sdk.resp.TradeQueryResponse;
 import com.payermax.sdk.utils.RsaUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -32,9 +34,9 @@ public class SdkTest {
         // client.setBaseUrl("https://the-other-url.payermax.com/aggregate-pay/api/gateway");
 
         // init default MerchantConfig
-        Map<String, String> keyPair = RsaUtils.createKeyPair();
-        String merchantPrivateKey = keyPair.get(RsaUtils.PRIVATE_KEY_NAME);
+
         String payermaxPublicKey = "get payermax public key from dashboard";
+        String merchantPrivateKey = "get your private key from testGenKeyPair()";
         String merchantNo = "get merchantNo from dashboard";
         String merchantAppId = "get appId from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
@@ -44,6 +46,15 @@ public class SdkTest {
                 .merchantAppId(merchantAppId)
                 .build();
         GlobalMerchantConfig.setDefaultConfig(merchantConfig);
+    }
+
+    @Test(testName = "test generate keypair")
+    public void testGenKeyPair() throws Exception {
+        Map<String, String> keyPair = RsaUtils.createKeyPair();
+        String merchantPrivateKey = keyPair.get(RsaUtils.PRIVATE_KEY_NAME);
+        String merchantPublicKey = keyPair.get(RsaUtils.PUBLIC_KEY_NAME);
+        System.out.println(merchantPrivateKey);
+        System.out.println(merchantPublicKey);
     }
 
     @Test(testName = "test use default merchant config and use common api mode")
@@ -56,6 +67,16 @@ public class SdkTest {
         // client构造完成后，可以进行反复使用，不需要重复获取实例
         String result = client.send("orderAndPay", jsonObject);
         System.out.println(result);
+    }
+
+    @Test(testName = "test query request")
+    public void testQueryRequest() throws Exception {
+
+        TradeQueryRequest request = new TradeQueryRequest();
+        request.setOutTradeNo("xxx");
+        GatewayResult<TradeQueryResponse> send = request.send();
+        TradeQueryResponse data = send.getData();
+        System.out.println(data);
     }
 
     @Test(testName = "test use default merchant config and use common api mode")

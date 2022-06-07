@@ -20,8 +20,7 @@ PayermaxClient client=DefaultPayermaxClient.getInstance();
 ### If you have only one merchant
 
 ```java
-Map<String, String> keyPair=RsaUtils.createKeyPair();
-        String merchantPrivateKey=keyPair.get(RsaUtils.PRIVATE_KEY_FILE);
+        String merchantPrivateKey="get your private key from testGenKeyPair()";
         String payermaxPublicKey="get payermax public key from dashboard";
         String merchantNo="get merchantNo from dashboard";
         String merchantAppId="get appId from dashboard";

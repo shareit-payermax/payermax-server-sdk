@@ -27,7 +27,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String HEADER_SIGN = "sign";
     public static final String HEADER_SDK_VER = "sdk-ver";
-    public static final String SDK_VER = "1.0.0";
+    public static final String SDK_VER = "1.1.0";
 
     private String baseUrl;
 
@@ -123,7 +123,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
         GatewayRequest busReq = new GatewayRequest();
         busReq.setData(busData);
         busReq.setMerchantNo(config.getMerchantNo());
-        busReq.setMerchantAppId(config.getMerchantAppId());
+        busReq.setAppId(config.getAppId());
         busReq.setRequestTime(DateFormatUtils.format(new Date(), DATE_FORMAT));
 
         return JSON.toJSONString(busReq);

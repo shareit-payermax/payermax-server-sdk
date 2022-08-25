@@ -16,7 +16,6 @@ import com.payermax.sdk.utils.RsaUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -38,12 +37,12 @@ public class SdkTest {
         String payermaxPublicKey = "get payermax public key from dashboard";
         String merchantPrivateKey = "get your private key from testGenKeyPair()";
         String merchantNo = "get merchantNo from dashboard";
-        String merchantAppId = "get appId from dashboard";
+        String appId = "get appId from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
-                .merchantAppId(merchantAppId)
+                .appId(appId)
                 .build();
         GlobalMerchantConfig.setDefaultConfig(merchantConfig);
     }
@@ -106,12 +105,12 @@ public class SdkTest {
         String merchantPrivateKey = keyPair.get(RsaUtils.PRIVATE_KEY_NAME);
         String payermaxPublicKey = "get payermax public key from dashboard";
         String merchantNo = "the other merchant no";
-        String merchantAppId = "get appId from dashboard";
+        String appId = "get appId from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
-                .merchantAppId(merchantAppId)
+                .appId(appId)
                 .build();
         GlobalMerchantConfig.addConfig(merchantConfig);
 

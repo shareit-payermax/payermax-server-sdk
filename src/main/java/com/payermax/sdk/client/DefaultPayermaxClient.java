@@ -27,6 +27,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String HEADER_SIGN = "sign";
     public static final String HEADER_SDK_VER = "sdk-ver";
+    public static final String HEADER_MERCHANT_AUTH_TOKEN = "merchant_auth_token";
     public static final String SDK_VER = "1.1.0";
 
     private String baseUrl;
@@ -85,11 +86,16 @@ public class DefaultPayermaxClient implements PayermaxClient {
         try {
             String reqString = buildReqString(config, busData);
             RequestBody requestBody = RequestBody.create(reqString, JSON_TYPE);
-            Request request = new Request.Builder()
-                    .header(HEADER_SIGN, calcSign(config, reqString)).header(HEADER_SDK_VER, SDK_VER)
+
+            Request.Builder builder = new Request.Builder();
+            builder.header(HEADER_SIGN, calcSign(config, reqString)).header(HEADER_SDK_VER, SDK_VER)
                     .url(this.baseUrl.concat("/").concat(apiName))
-                    .post(requestBody)
-                    .build();
+                    .post(requestBody);
+            if(StringUtils.isNotBlank(config.getMerchantAuthToken())){
+                builder.header(HEADER_MERCHANT_AUTH_TOKEN, config.getMerchantAuthToken());
+            }
+            Request request = builder.build();
+
             Response response = httpClient.newCall(request).execute();
             ResponseBody responseBody = response.body();
             if (responseBody == null) {
@@ -125,6 +131,9 @@ public class DefaultPayermaxClient implements PayermaxClient {
         busReq.setMerchantNo(config.getMerchantNo());
         busReq.setAppId(config.getAppId());
         busReq.setRequestTime(DateFormatUtils.format(new Date(), DATE_FORMAT));
+        if(StringUtils.isNotBlank(config.getSpMerchantNo())){
+             busReq.setSpMerchantNo(config.getSpMerchantNo());
+        }
 
         return JSON.toJSONString(busReq);
     }

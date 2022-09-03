@@ -38,11 +38,19 @@ public class SdkTest {
         String merchantPrivateKey = "get your private key from testGenKeyPair()";
         String merchantNo = "get merchantNo from dashboard";
         String appId = "get appId from dashboard";
+
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
+
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
                 .appId(appId)
+                //In ISV mode, spMerchantNo and merchantAuthToken is required
+                .spMerchantNo(spMerchantNo)
+                .merchantAuthToken(merchantAuthToken)
                 .build();
         GlobalMerchantConfig.setDefaultConfig(merchantConfig);
     }
@@ -106,11 +114,17 @@ public class SdkTest {
         String payermaxPublicKey = "get payermax public key from dashboard";
         String merchantNo = "the other merchant no";
         String appId = "get appId from dashboard";
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
                 .appId(appId)
+                //In ISV mode, spMerchantNo and merchantAuthToken is required
+                .spMerchantNo(spMerchantNo)
+                .merchantAuthToken(merchantAuthToken)
                 .build();
         GlobalMerchantConfig.addConfig(merchantConfig);
 

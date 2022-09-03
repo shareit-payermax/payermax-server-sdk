@@ -16,6 +16,7 @@ public class GatewayRequest implements Serializable {
     private String version = "1.1";
     private String appId;
     private String merchantNo;
+    private String spMerchantNo;
     private String keyVersion = "1";
     private Object data;
 
@@ -49,6 +50,14 @@ public class GatewayRequest implements Serializable {
 
     public void setMerchantNo(String merchantNo) {
         this.merchantNo = merchantNo;
+    }
+
+    public String getSpMerchantNo() {
+        return spMerchantNo;
+    }
+
+    public void setSpMerchantNo(String spMerchantNo) {
+        this.spMerchantNo = spMerchantNo;
     }
 
     public String getKeyVersion() {

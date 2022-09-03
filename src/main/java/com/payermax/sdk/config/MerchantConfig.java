@@ -13,6 +13,10 @@ public class MerchantConfig {
 
     private String merchantNo;
 
+    private String spMerchantNo;
+
+    private String merchantAuthToken;
+
     private boolean needCheckSign = true;
 
     public String getAppId() {
@@ -55,12 +59,29 @@ public class MerchantConfig {
         this.payermaxPublicKey = payermaxPublicKey;
     }
 
+    public String getSpMerchantNo() {
+        return spMerchantNo;
+    }
+
+    public void setSpMerchantNo(String spMerchantNo) {
+        this.spMerchantNo = spMerchantNo;
+    }
+
+    public String getMerchantAuthToken() {
+        return merchantAuthToken;
+    }
+
+    public void setMerchantAuthToken(String merchantAuthToken) {
+        this.merchantAuthToken = merchantAuthToken;
+    }
 
     public static final class Builder {
         private String merchantPrivateKey;
         private String payermaxPublicKey;
         private String appId;
         private String merchantNo;
+        private String spMerchantNo;
+        private String merchantAuthToken;
         private boolean checkSign = true;
 
         private Builder() {
@@ -94,6 +115,15 @@ public class MerchantConfig {
             this.checkSign = checkSign;
             return this;
         }
+        public Builder spMerchantNo(String spMerchantNo) {
+            this.spMerchantNo = spMerchantNo;
+            return this;
+        }
+
+        public Builder merchantAuthToken(String merchantAuthToken) {
+            this.merchantAuthToken = merchantAuthToken;
+            return this;
+        }
 
         public MerchantConfig build() {
             MerchantConfig payermaxMerchantConfig = new MerchantConfig();
@@ -101,6 +131,8 @@ public class MerchantConfig {
             payermaxMerchantConfig.setPayermaxPublicKey(payermaxPublicKey);
             payermaxMerchantConfig.setAppId(appId);
             payermaxMerchantConfig.setMerchantNo(merchantNo);
+            payermaxMerchantConfig.setSpMerchantNo(spMerchantNo);
+            payermaxMerchantConfig.setMerchantAuthToken(merchantAuthToken);
             payermaxMerchantConfig.setNeedCheckSign(checkSign);
             return payermaxMerchantConfig;
         }

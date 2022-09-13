@@ -16,7 +16,6 @@ import com.payermax.sdk.utils.RsaUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -38,12 +37,20 @@ public class SdkTest {
         String payermaxPublicKey = "get payermax public key from dashboard";
         String merchantPrivateKey = "get your private key from testGenKeyPair()";
         String merchantNo = "get merchantNo from dashboard";
-        String merchantAppId = "get appId from dashboard";
+        String appId = "get appId from dashboard";
+
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
+
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
-                .merchantAppId(merchantAppId)
+                .appId(appId)
+                //In ISV mode, spMerchantNo and merchantAuthToken is required
+                .spMerchantNo(spMerchantNo)
+                .merchantAuthToken(merchantAuthToken)
                 .build();
         GlobalMerchantConfig.setDefaultConfig(merchantConfig);
     }
@@ -106,12 +113,18 @@ public class SdkTest {
         String merchantPrivateKey = keyPair.get(RsaUtils.PRIVATE_KEY_NAME);
         String payermaxPublicKey = "get payermax public key from dashboard";
         String merchantNo = "the other merchant no";
-        String merchantAppId = "get appId from dashboard";
+        String appId = "get appId from dashboard";
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
         MerchantConfig merchantConfig = MerchantConfig.Builder.builder()
                 .merchantPrivateKey(merchantPrivateKey)
                 .payermaxPublicKey(payermaxPublicKey)
                 .merchantNo(merchantNo)
-                .merchantAppId(merchantAppId)
+                .appId(appId)
+                //In ISV mode, spMerchantNo and merchantAuthToken is required
+                .spMerchantNo(spMerchantNo)
+                .merchantAuthToken(merchantAuthToken)
                 .build();
         GlobalMerchantConfig.addConfig(merchantConfig);
 

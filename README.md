@@ -4,7 +4,7 @@
 <dependency>
   <groupId>com.payermax</groupId>
   <artifactId>payermax-server-sdk</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
@@ -23,12 +23,20 @@ PayermaxClient client=DefaultPayermaxClient.getInstance();
         String merchantPrivateKey="get your private key from testGenKeyPair()";
         String payermaxPublicKey="get payermax public key from dashboard";
         String merchantNo="get merchantNo from dashboard";
-        String merchantAppId="get appId from dashboard";
+        String appId="get appId from dashboard";
+
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
+        
         MerchantConfig merchantConfig=MerchantConfig.Builder.builder()
         .merchantPrivateKey(merchantPrivateKey)
         .payermaxPublicKey(payermaxPublicKey)
         .merchantNo(merchantNo)
-        .merchantAppId(merchantAppId)
+        .appId(appId)
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        .spMerchantNo(spMerchantNo)
+        .merchantAuthToken(merchantAuthToken)
         .build();
         GlobalMerchantConfig.setDefaultConfig(merchantConfig);
 ```
@@ -40,12 +48,20 @@ Map<String, String> keyPair=RsaUtils.createKeyPair();
         String merchantPrivateKey=keyPair.get(RsaUtils.PRIVATE_KEY_FILE);
         String payermaxPublicKey="get payermax public key from dashboard";
         String merchantNo="the other merchant no";
-        String merchantAppId="get appId from dashboard";
+        String appId="get appId from dashboard";
+
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        String spMerchantNo = "get spMerchantNo from dashboard";
+        String merchantAuthToken = "get merchantAuthToken from dashboard";
+        
         MerchantConfig merchantConfig=MerchantConfig.Builder.builder()
         .merchantPrivateKey(merchantPrivateKey)
         .payermaxPublicKey(payermaxPublicKey)
         .merchantNo(merchantNo)
-        .merchantAppId(merchantAppId)
+        .appId(appId)
+        //In ISV mode, spMerchantNo and merchantAuthToken is required
+        .spMerchantNo(spMerchantNo)
+        .merchantAuthToken(merchantAuthToken)
         .build();
         GlobalMerchantConfig.addConfig(merchantConfig);
 // MerchantConfig merchantConfig2 = ....

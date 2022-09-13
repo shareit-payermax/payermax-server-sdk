@@ -13,9 +13,10 @@ public class GatewayRequest implements Serializable {
      * 格式为 yyyy-MM-dd'T'HH:mm:ss.SSSZ,  符合ISO 8601 规范，paymax会校验此时间和服务器的时间差不超过两分钟
      */
     private String requestTime;
-    private String version = "1.0";
-    private String merchantAppId;
+    private String version = "1.1";
+    private String appId;
     private String merchantNo;
+    private String spMerchantNo;
     private String keyVersion = "1";
     private Object data;
 
@@ -35,12 +36,12 @@ public class GatewayRequest implements Serializable {
         this.version = version;
     }
 
-    public String getMerchantAppId() {
-        return merchantAppId;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setMerchantAppId(String merchantAppId) {
-        this.merchantAppId = merchantAppId;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getMerchantNo() {
@@ -49,6 +50,14 @@ public class GatewayRequest implements Serializable {
 
     public void setMerchantNo(String merchantNo) {
         this.merchantNo = merchantNo;
+    }
+
+    public String getSpMerchantNo() {
+        return spMerchantNo;
+    }
+
+    public void setSpMerchantNo(String spMerchantNo) {
+        this.spMerchantNo = spMerchantNo;
     }
 
     public String getKeyVersion() {

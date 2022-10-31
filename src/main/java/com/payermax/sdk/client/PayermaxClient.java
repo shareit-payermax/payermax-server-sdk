@@ -1,5 +1,6 @@
 package com.payermax.sdk.client;
 
+import com.payermax.sdk.config.MerchantConfig;
 import com.payermax.sdk.enums.Env;
 
 /**
@@ -34,6 +35,7 @@ public interface PayermaxClient {
      * @return json content
      */
     String send(String apiName, Object request, String merchantNo);
+    String send(String apiName, Object request, MerchantConfig config);
 
     /**
      * used to verify the notification come from payermax

@@ -82,7 +82,8 @@ public class DefaultPayermaxClient implements PayermaxClient {
     }
 
     @NotNull
-    private String send(String apiName, Object busData, MerchantConfig config) {
+    @Override
+    public String send(String apiName, Object busData, MerchantConfig config) {
         try {
             String reqString = buildReqString(config, busData);
             RequestBody requestBody = RequestBody.create(reqString, JSON_TYPE);

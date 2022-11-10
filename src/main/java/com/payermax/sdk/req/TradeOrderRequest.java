@@ -341,10 +341,20 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          * 卡组织
          **/
         String cardOrg;
+
+        String cardOrgType;
         /**
          * 卡cvv
          */
         String cvv;
+
+        public String getCardOrgType() {
+            return cardOrgType;
+        }
+
+        public void setCardOrgType(String cardOrgType) {
+            this.cardOrgType = cardOrgType;
+        }
 
         public String getCardIdentifierNo() {
             return cardIdentifierNo;

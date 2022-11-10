@@ -13,7 +13,6 @@ import com.payermax.sdk.utils.RsaUtils;
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class DefaultPayermaxClient implements PayermaxClient {
 
-    public static final MediaType JSON_TYPE = MediaType.get("application/json; charset=utf-8");
+    public static final MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static final String HEADER_SIGN = "sign";
     public static final String HEADER_SDK_VER = "sdk-ver";
@@ -35,9 +34,11 @@ public class DefaultPayermaxClient implements PayermaxClient {
     private Env env;
 
     private OkHttpClient httpClient = new OkHttpClient().newBuilder()
-            .retryOnConnectionFailure(false)
+            .retryOnConnectionFailure(true)
             .connectionPool(new ConnectionPool(200, 5, TimeUnit.MINUTES))
-            .callTimeout(15L, TimeUnit.SECONDS)
+            .connectTimeout(1L, TimeUnit.SECONDS)
+            .readTimeout(10L, TimeUnit.SECONDS)
+            .writeTimeout(3L, TimeUnit.SECONDS)
             .build();
 
     private static final DefaultPayermaxClient INSTANCE = new DefaultPayermaxClient();
@@ -81,12 +82,11 @@ public class DefaultPayermaxClient implements PayermaxClient {
         return send(apiName, busData, config);
     }
 
-    @NotNull
     @Override
     public String send(String apiName, Object busData, MerchantConfig config) {
         try {
             String reqString = buildReqString(config, busData);
-            RequestBody requestBody = RequestBody.create(reqString, JSON_TYPE);
+            RequestBody requestBody = RequestBody.create(JSON_TYPE, reqString);
 
             Request.Builder builder = new Request.Builder();
             builder.header(HEADER_SIGN, calcSign(config, reqString)).header(HEADER_SDK_VER, SDK_VER)
@@ -133,7 +133,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
         busReq.setMerchantAppId(config.getMerchantAppId());
         busReq.setRequestTime(DateFormatUtils.format(new Date(), DATE_FORMAT));
         if(StringUtils.isNotBlank(config.getSpMerchantNo())){
-             busReq.setSpMerchantNo(config.getSpMerchantNo());
+            busReq.setSpMerchantNo(config.getSpMerchantNo());
         }
 
         return JSON.toJSONString(busReq);

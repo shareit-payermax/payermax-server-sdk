@@ -28,7 +28,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
     public static final String HEADER_SIGN = "sign";
     public static final String HEADER_SDK_VER = "sdk-ver";
     public static final String HEADER_MERCHANT_AUTH_TOKEN = "merchant_auth_token";
-    public static final String SDK_VER = "1.1.0";
+    public static final String SDK_VER = "1.0.5";
 
     private String baseUrl;
 
@@ -82,7 +82,8 @@ public class DefaultPayermaxClient implements PayermaxClient {
     }
 
     @NotNull
-    private String send(String apiName, Object busData, MerchantConfig config) {
+    @Override
+    public String send(String apiName, Object busData, MerchantConfig config) {
         try {
             String reqString = buildReqString(config, busData);
             RequestBody requestBody = RequestBody.create(reqString, JSON_TYPE);

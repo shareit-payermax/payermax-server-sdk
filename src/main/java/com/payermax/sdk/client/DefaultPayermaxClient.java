@@ -16,6 +16,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -34,15 +35,37 @@ public class DefaultPayermaxClient implements PayermaxClient {
 
     private Env env;
 
-    private OkHttpClient httpClient = new OkHttpClient().newBuilder()
-            .retryOnConnectionFailure(false)
-            .connectionPool(new ConnectionPool(200, 5, TimeUnit.MINUTES))
-            .callTimeout(15L, TimeUnit.SECONDS)
-            .build();
+    private OkHttpClient httpClient;
 
-    private static final DefaultPayermaxClient INSTANCE = new DefaultPayermaxClient();
+    private static DefaultPayermaxClient INSTANCE;
 
-    public static DefaultPayermaxClient getInstance() {
+
+    private DefaultPayermaxClient(List<Interceptor> appInterceptors, List<Interceptor> networkInterceptors){
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        if(appInterceptors != null && appInterceptors.size() > 0) {
+            appInterceptors.forEach(interceptor -> builder.addInterceptor(interceptor));
+        }
+        if(networkInterceptors != null && networkInterceptors.size() > 0) {
+            networkInterceptors.forEach(interceptor -> builder.addNetworkInterceptor(interceptor));
+        }
+        httpClient = builder
+                .retryOnConnectionFailure(false)
+                .connectionPool(new ConnectionPool(200, 5, TimeUnit.MINUTES))
+                .callTimeout(15L, TimeUnit.SECONDS)
+                .build();
+    }
+
+    public synchronized static DefaultPayermaxClient getInstance() {
+        return getInstance(null, null);
+    }
+    public synchronized static DefaultPayermaxClient getInstance(List<Interceptor> appInterceptors) {
+        return getInstance(appInterceptors, null);
+    }
+
+    public synchronized static DefaultPayermaxClient getInstance(List<Interceptor> appInterceptors, List<Interceptor> networkInterceptors) {
+        if (INSTANCE == null) {
+            INSTANCE = new DefaultPayermaxClient(appInterceptors, networkInterceptors);
+        }
         return INSTANCE;
     }
 

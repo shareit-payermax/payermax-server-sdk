@@ -9,7 +9,7 @@ public class MerchantConfig {
 
     private String payermaxPublicKey;
 
-    private String merchantAppId;
+    private String appId;
 
     private String merchantNo;
 
@@ -19,12 +19,12 @@ public class MerchantConfig {
 
     private boolean needCheckSign = true;
 
-    public String getMerchantAppId() {
-        return merchantAppId;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setMerchantAppId(String merchantAppId) {
-        this.merchantAppId = merchantAppId;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getMerchantNo() {
@@ -129,7 +129,7 @@ public class MerchantConfig {
             MerchantConfig payermaxMerchantConfig = new MerchantConfig();
             payermaxMerchantConfig.setMerchantPrivateKey(merchantPrivateKey);
             payermaxMerchantConfig.setPayermaxPublicKey(payermaxPublicKey);
-            payermaxMerchantConfig.setMerchantAppId(appId);
+            payermaxMerchantConfig.setAppId(appId);
             payermaxMerchantConfig.setMerchantNo(merchantNo);
             payermaxMerchantConfig.setSpMerchantNo(spMerchantNo);
             payermaxMerchantConfig.setMerchantAuthToken(merchantAuthToken);

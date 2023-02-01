@@ -130,7 +130,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
         GatewayRequest busReq = new GatewayRequest();
         busReq.setData(busData);
         busReq.setMerchantNo(config.getMerchantNo());
-        busReq.setAppId(config.getMerchantAppId());
+        busReq.setAppId(config.getAppId());
         busReq.setRequestTime(DateFormatUtils.format(new Date(), DATE_FORMAT));
         if(StringUtils.isNotBlank(config.getSpMerchantNo())){
              busReq.setSpMerchantNo(config.getSpMerchantNo());

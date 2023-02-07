@@ -43,10 +43,10 @@ public class DefaultPayermaxClient implements PayermaxClient {
     private DefaultPayermaxClient(List<Interceptor> appInterceptors, List<Interceptor> networkInterceptors){
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
         if(appInterceptors != null && appInterceptors.size() > 0) {
-            appInterceptors.forEach(interceptor -> builder.addInterceptor(interceptor));
+            appInterceptors.forEach(builder::addInterceptor);
         }
         if(networkInterceptors != null && networkInterceptors.size() > 0) {
-            networkInterceptors.forEach(interceptor -> builder.addNetworkInterceptor(interceptor));
+            networkInterceptors.forEach(builder::addNetworkInterceptor);
         }
         httpClient = builder
                 .retryOnConnectionFailure(false)

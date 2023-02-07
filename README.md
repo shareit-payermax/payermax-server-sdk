@@ -4,7 +4,7 @@
 <dependency>
   <groupId>com.payermax</groupId>
   <artifactId>payermax-server-sdk</artifactId>
-  <version>{{最新版本}}</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 

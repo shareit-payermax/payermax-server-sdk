@@ -37,7 +37,9 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     /**
      * 商户指定的跳转URL，用户完成支付后会被跳转到该地址
      */
+    @Deprecated
     private String frontCallbackURL;
+    private String frontCallbackUrl;
 
     /**
      * 国家代码
@@ -89,6 +91,14 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         return "orderAndPay";
     }
 
+    public String getFrontCallbackUrl() {
+        return frontCallbackUrl;
+    }
+
+    public void setFrontCallbackUrl(String frontCallbackUrl) {
+        this.frontCallbackUrl = frontCallbackUrl;
+    }
+
     public String getOutTradeNo() {
         return outTradeNo;
     }
@@ -130,11 +140,11 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     }
 
     public String getFrontCallbackURL() {
-        return frontCallbackURL;
+        return this.frontCallbackUrl;
     }
 
     public void setFrontCallbackURL(String frontCallbackURL) {
-        this.frontCallbackURL = frontCallbackURL;
+        this.frontCallbackUrl = frontCallbackURL;
     }
 
     public String getCountry() {

@@ -245,12 +245,12 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         /**
          * 交易金额
          */
-        String amount;
+        private String amount;
         /**
          * 交易币种
          */
 
-        String currency;
+        private String currency;
 
         public String getAmount() {
             return amount;
@@ -275,49 +275,49 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         /**
          * 支付方式
          */
-        String paymentMethod;
+        private String paymentMethod;
         /**
          * 目标机构
          */
-        String targetOrg;
+        private String targetOrg;
         /**
          * 收款方类型（PERSONAL/CORPORATION），默认PERSONAL
          */
-        String payeeType;
+        private String payeeType;
         /**
          * 卡信息
          */
-        CardInfo cardInfo;
+        private CardInfo cardInfo;
         /**
          * 账号信息
          */
-        AccountInfo accountInfo;
+        private AccountInfo accountInfo;
 
         /**
          * 银行信息
          */
-        BankInfo bankInfo;
+        private BankInfo bankInfo;
 
         /**
          * payeename信息
          */
-        Name name;
+        private Name name;
 
         /**
          * document
          */
-        Document document;
+        private Document document;
 
         /**
          * address
          */
-        Address address;
+        private Address address;
 
-        String payeePhone;
+        private String payeePhone;
 
-        String birthDate;
+        private String birthDate;
 
-        String email;
+        private String email;
 
         public String getPaymentMethod() {
             return paymentMethod;
@@ -425,12 +425,12 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         /**
          * payername信息
          */
-        Name name;
+        private Name name;
 
         /**
          * 二级商户信息
          */
-        String subMerchantNo;
+        private String subMerchantNo;
 
         public Name getName() {
             return name;
@@ -456,15 +456,15 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
         /**
          * 收款方账号，根据付款方式不同填入相应账号
          */
-        String accountNo;
+        private String accountNo;
         /**
          * 收款账户类型,在不同国家-支付方式下规范不同
          */
-        String accountType;
+        private String accountType;
         /**
          * 收款方账户验证数字
          */
-        String checkDigit;
+        private String checkDigit;
 
         public String getAccountNo() {
             return accountNo;
@@ -498,23 +498,23 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
          * 用于识别特定金融机构下的收款方银行代码，在不同国家下填写规范不同，参见【银行编码】
          */
 
-        String bankCode;
+        private String bankCode;
         /**
          * 收款方银行名称
          */
-        String bankName;
+        private String bankName;
         /**
          * 收款人银行网点号/分行号
          */
-        String bankBranch;
+        private String bankBranch;
         /**
          * 收款方银行所在城市
          */
-        String bankCity;
+        private String bankCity;
         /**
          * 收款方银行的代理账号（correspondent account）
          */
-        String corAccountNo;
+        private String corAccountNo;
 
         public String getBankCode() {
             return bankCode;
@@ -564,19 +564,19 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
          * 名
          */
 
-        String firstName;
+        private String firstName;
         /**
          * 中间名，多段中间名时，使用空格进行分隔
          */
-        String middleName;
+        private String middleName;
         /**
          * 姓
          */
-        String lastName;
+        private String lastName;
         /**
          * 全名
          */
-        String fullName;
+        private String fullName;
 
         public String getFirstName() {
             return firstName;
@@ -618,19 +618,19 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
          * 收款方个人身份证明类型，在不同国家下可选类型不同，参见【身份证明】
          */
 
-        String documentType;
+        private String documentType;
         /**
          * 收款方个人识别号码，在不同国家下可选类型不同，参见【身份证明】
          */
-        String documentId;
+        private String documentId;
         /**
          * 收款方个人识别号码生效日期，在不同国家下可选类型不同，yyyy-MM-dd格式
          */
-        String documentIssueDate;
+        private String documentIssueDate;
         /**
          * 全名
          */
-        String documentExpireDate;
+        private String documentExpireDate;
 
         public String getDocumentType() {
             return documentType;
@@ -672,19 +672,19 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
          * 收款方地址
          */
 
-        String address;
+        private String address;
         /**
          * 收款方城市
          */
-        String city;
+        private String city;
         /**
          * 州
          */
-        String state;
+        private String state;
         /**
          * 收款方邮编
          */
-        String zipCode;
+        private String zipCode;
 
         public String getAddress() {
             return address;
@@ -727,28 +727,28 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
          * 卡组织
          */
 
-        String cardOrg;
+        private String cardOrg;
         /**
          * cardIdentifierNo
          */
-        String cardIdentifierNo;
+        private String cardIdentifierNo;
         /**
          * 持卡人姓名
          */
-        String cardHolderFullName;
+        private String cardHolderFullName;
         /**
          * 卡有效期-年，只取后两位年份
          */
 
-        String cardExpirationYear;
+        private String cardExpirationYear;
         /**
          * 卡有效期-月
          */
-        String cardExpirationMonth;
+        private String cardExpirationMonth;
         /**
          *
          */
-        String cvv;
+        private String cvv;
 
 
         public String getCardOrg() {

@@ -37,13 +37,21 @@ public class PayoutQueryResponse implements Serializable {
      */
     private String transactionUtcTime;
 
-    //该笔订单可以取款的最晚时间（仅在线下场景中出现）
+    /**
+     * 该笔订单可以取款的最晚时间（仅在线下场景中出现）
+     */
     private String expiryTime;
-    //取款码
+    /**
+     * 取款码
+     */
     private String redeemCode;
-    //该笔订单成功、失败的时间
+    /**
+     * 该笔订单成功、失败的时间
+     */
     private String payFinishTime;
-    //该笔订单退票的时间（仅在退票中出现）
+    /**
+     * 该笔订单退票的时间（仅在退票中出现）
+     */
     private String bounceBackTime;
 
     /**
@@ -74,10 +82,14 @@ public class PayoutQueryResponse implements Serializable {
      */
     private PayoutRequest.Trade trade;
 
-    /*付款金额信息 */
+    /**
+     * 付款金额信息
+     */
     private Source source;
 
-    /*到账金额信息 */
+    /**
+     * 到账金额信息
+     */
     private Destination destination;
 
     public String getOutTradeNo() {
@@ -211,19 +223,31 @@ public class PayoutQueryResponse implements Serializable {
     public static final class Source implements Serializable {
 
         private static final long serialVersionUID = -6498233477607373626L;
-        //扣费金额，为扣除付款方账户的金额
+        /**
+         * 扣费金额，为扣除付款方账户的金额
+         */
         private String amount;
-        //扣费币种，为扣除付款方账户的币种
+        /**
+         * 扣费币种，为扣除付款方账户的币种
+         */
         private String currency;
-        //付款方承担的手续费
+        /**
+         * 付款方承担的手续费
+         */
         private String fee;
 
         private String feeCurrency;
-        //付款方承担的税费
+        /**
+         * 付款方承担的税费
+         */
         private String tax;
-        //收款方承担的税费币种
+        /**
+         * 收款方承担的税费币种
+         */
         private String taxCurrency;
-        //交易金额转换为扣费金额使用的汇率
+        /**
+         * 交易金额转换为扣费金额使用的汇率
+         */
         private String exchangeRate;
 
         public String getAmount() {

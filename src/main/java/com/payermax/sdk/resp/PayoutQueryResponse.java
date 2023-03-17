@@ -310,19 +310,33 @@ public class PayoutQueryResponse implements Serializable {
     public static final class Destination implements Serializable {
 
         private static final long serialVersionUID = -6498233477604373626L;
-        //收款方到账金额
+        /**
+         * 收款方到账金额
+         */
         private String amount;
-        //收款方到账币种
+        /**
+         * 收款方到账币种
+         */
         private String currency;
-        //收款方承担的手续费
+        /**
+         * 收款方承担的手续费
+         */
         private String fee;
-        //收款方承担的手续费币种
+        /**
+         * 收款方承担的手续费币种
+         */
         private String feeCurrency;
-        //收款方承担的税费
+        /**
+         * 收款方承担的税费
+         */
         private String tax;
-        //收款方承担的税费币种
+        /**
+         * 收款方承担的税费币种
+         */
         private String taxCurrency;
-        //交易金额转换为支付金额使用的汇率
+        /**
+         * 交易金额转换为支付金额使用的汇率
+         */
         private String exchangeRate;
 
         public String getAmount() {

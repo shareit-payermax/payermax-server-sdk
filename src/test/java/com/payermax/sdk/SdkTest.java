@@ -8,8 +8,12 @@ import com.payermax.sdk.config.GlobalMerchantConfig;
 import com.payermax.sdk.config.MerchantConfig;
 import com.payermax.sdk.domain.GatewayResult;
 import com.payermax.sdk.enums.Env;
+import com.payermax.sdk.req.PayoutQueryRequest;
+import com.payermax.sdk.req.PayoutRequest;
 import com.payermax.sdk.req.TradeOrderRequest;
 import com.payermax.sdk.req.TradeQueryRequest;
+import com.payermax.sdk.resp.PayoutQueryResponse;
+import com.payermax.sdk.resp.PayoutResponse;
 import com.payermax.sdk.resp.TradePayOrderResponse;
 import com.payermax.sdk.resp.TradeQueryResponse;
 import com.payermax.sdk.utils.RsaUtils;
@@ -130,5 +134,25 @@ public class SdkTest {
 
         GatewayResult<TradePayOrderResponse> resp = request.send(merchantNo);
         System.out.println(resp);
+    }
+
+    @Test(testName = "paymentOrderPay test")
+    public void testPayout() {
+        PayoutRequest request = new PayoutRequest();
+        request.setOutTradeNo("xxxx");
+        // set the other information
+
+        GatewayResult<PayoutResponse> result = request.send();
+        System.out.println(result.getData());
+    }
+
+    @Test(testName = "paymentOrderQry test")
+    public void testPayoutQry() {
+        PayoutQueryRequest request = new PayoutQueryRequest();
+        request.setOutTradeNo("xxxx");
+        // set the other information
+
+        GatewayResult<PayoutQueryResponse> result = request.send();
+        System.out.println(result.getData());
     }
 }

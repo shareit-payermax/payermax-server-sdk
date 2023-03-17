@@ -49,7 +49,7 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
     /**
      * 商户用户id
      */
-    String userId;
+    private String userId;
 
     /**
      * 服务端支付结果通知URL地址
@@ -225,26 +225,26 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 支付方式（跟踪产品，将支付方式改为编码）
          */
-        String paymentMethod;
+        private String paymentMethod;
         /**
          * 目标机构（跟踪产品，将支付方式改为编码）
          */
-        String targetOrg;
+        private String targetOrg;
 
         /**
          * 支付账户号信息
          */
-        List<PayAccountInfo> payAccountInfo;
+        private List<PayAccountInfo> payAccountInfo;
 
         /**
          * 卡信息--【电商场景必填】
          */
-        CardInfo cardInfo;
+        private CardInfo cardInfo;
 
         /**
          * 商户用户信息
          */
-        OutUserInfo buyerInfo;
+        private OutUserInfo buyerInfo;
 
         public String getPaymentMethod() {
             return paymentMethod;
@@ -293,15 +293,15 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 账户类型（EMAIL,PHONE,ID，CARD）
          */
-        String accountNoType;
+        private String accountNoType;
         /**
          * 账户号--accountType类型是EMAIL,PHONE,ID
          */
-        String accountNo;
+        private String accountNo;
         /**
          * 卡信息
          */
-        CardInfo cardInfo;
+        private CardInfo cardInfo;
 
         public String getAccountNoType() {
             return accountNoType;
@@ -334,29 +334,29 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 卡号
          */
-        String cardIdentifierNo;
+        private String cardIdentifierNo;
         /**
          * 持卡人姓名
          */
-        String cardHolderFullName;
+        private String cardHolderFullName;
         /**
          * 卡有效期-年
          */
-        String cardExpirationYear;
+        private String cardExpirationYear;
         /**
          * 卡有效期-月
          */
-        String cardExpirationMonth;
+        private String cardExpirationMonth;
         /**
          * 卡组织
          **/
-        String cardOrg;
+        private String cardOrg;
 
-        String cardOrgType;
+        private String cardOrgType;
         /**
          * 卡cvv
          */
-        String cvv;
+        private String cvv;
 
         public String getCardOrgType() {
             return cardOrgType;
@@ -421,29 +421,29 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 商品编号
          */
-        String goodsId;
+        private String goodsId;
         /**
          * 商品名称
          */
-        String goodsName;
+        private String goodsName;
         /**
          * 商品数量
          */
-        String quantity;
+        private String quantity;
         /**
          * 商品单价,单位：元
          */
-        String price;
+        private String price;
 
         /**
          * 商品报价币种
          */
-        String goodsCurrency;
+        private String goodsCurrency;
 
         /**
          * 商品展示地址
          */
-        String showUrl;
+        private String showUrl;
 
         public String getGoodsId() {
             return goodsId;
@@ -501,51 +501,51 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 配送email
          */
-        String email;
+        private String email;
         /**
          * 配送人first姓名
          */
-        String firstName;
+        private String firstName;
         /**
          * 配送人middle姓名
          */
-        String middleName;
+        private String middleName;
         /**
          * 配送人last姓名
          */
-        String lastName;
+        private String lastName;
         /**
          * 配送地址1
          */
-        String address1;
+        private String address1;
         /**
          * 配送地址2
          */
-        String address2;
+        private String address2;
         /**
          * 配送地址所在城市
          */
-        String city;
+        private String city;
         /**
          * 配送地址所在区域
          */
-        String region;
+        private String region;
         /**
          * 配送地址所在州
          */
-        String state;
+        private String state;
         /**
          * 配送所在国家
          */
-        String country;
+        private String country;
         /**
          * 配送地邮编
          */
-        String zipCode;
+        private String zipCode;
         /**
          * 配送人手机
          */
-        String phoneNo;
+        private String phoneNo;
 
         public String getEmail() {
             return email;
@@ -650,51 +650,51 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 名
          */
-        String firstName;
+        private String firstName;
         /**
          * 中间名
          */
-        String middleName;
+        private String middleName;
         /**
          * 姓
          */
-        String lastName;
+        private String lastName;
         /**
          * 用户邮箱
          */
-        String email;
+        private String email;
         /**
          * 用户手机号
          */
-        String phoneNo;
+        private String phoneNo;
         /**
          * 用户证件类型（IDCARD PASSPORT DNI T.C.KimlikNo.）
          */
-        String idType;
+        private String idType;
         /**
          * 用户证件号
          */
-        String taxNo;
+        private String taxNo;
         /**
          * 用户所在区域
          */
-        String region;
+        private String region;
         /**
          * 用户所在城市
          */
-        String city;
+        private String city;
         /**
          * 用户详细地址
          */
-        String address;
+        private String address;
         /**
          * 用户客户端ip
          */
-        String clientIp;
+        private String clientIp;
         /**
          * 浏览器ua信息
          */
-        String userAgent;
+        private String userAgent;
 
         public String getFirstName() {
             return firstName;
@@ -800,51 +800,51 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 账单各
          */
-        String firstName;
+        private String firstName;
         /**
          * 账单中间名
          */
-        String middleName;
+        private String middleName;
         /**
          * 账单姓
          */
-        String lastName;
+        private String lastName;
         /**
          * 账单email
          */
-        String email;
+        private String email;
         /**
          * 账单手机号
          */
-        String phoneNo;
+        private String phoneNo;
         /**
          * 账单地址1
          */
-        String address1;
+        private String address1;
         /**
          * 账单地址2
          */
-        String address2;
+        private String address2;
         /**
          * 账单地址所在城市
          */
-        String city;
+        private String city;
         /**
          * 账单地址所在区域
          */
-        String region;
+        private String region;
         /**
          * 账单地址所在州
          */
-        String state;
+        private String state;
         /**
          * 账单地址所在国家
          */
-        String country;
+        private String country;
         /**
          * 账单地址邮编
          */
-        String zipCode;
+        private String zipCode;
 
         public String getFirstName() {
             return firstName;

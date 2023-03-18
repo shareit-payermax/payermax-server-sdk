@@ -18,8 +18,8 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
 
     /**
      * 商户版本 1.0为走迁移商户流程商户 2.0为走新商户流程商户 不填默认新商户
-     *
-     * @mock M36977092608
+     * <p>
+     * sample:  M36977092608
      */
     private String merchantVersion;
 
@@ -46,8 +46,8 @@ public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serial
 
     /**
      * 国家代码
-     *
-     * @mock ID
+     * <p>
+     * sample:  ID
      */
     private String country;
 

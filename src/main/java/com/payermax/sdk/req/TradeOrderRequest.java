@@ -4,7 +4,6 @@ import com.payermax.sdk.api.BaseRequest;
 import com.payermax.sdk.resp.TradePayOrderResponse;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable {

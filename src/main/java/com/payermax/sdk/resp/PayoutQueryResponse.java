@@ -12,28 +12,28 @@ public class PayoutQueryResponse implements Serializable {
     private static final long serialVersionUID = 5793977216189911546L;
     /**
      * 商户订单号
-     *
-     * @mock MO20211118000001
+     * <p>
+     * sample:  MO20211118000001
      */
     private String outTradeNo;
 
     /**
      * 交易单号
-     *
-     * @mock 20201112400101244339
+     * <p>
+     * sample:  20201112400101244339
      */
     private String tradeNo;
 
     /**
      * 交易订单状态(PENDING,SUCCESS,FAILED,BOUNCEBACK)
-     *
-     * @mock SUCCESS
+     * <p>
+     * sample:  SUCCESS
      */
     private String status;
     /**
      * 交易创建时间
-     *
-     * @mock ID
+     * <p>
+     * sample:  ID
      */
     private String transactionUtcTime;
 

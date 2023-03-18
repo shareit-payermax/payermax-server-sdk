@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * @author ctl
- * @description
  **/
 
 public class PayoutResponse implements Serializable {
@@ -13,21 +12,21 @@ public class PayoutResponse implements Serializable {
 
     /**
      * 商户订单号
-     *
-     * @mock Test202111092100001
+     * <p>
+     * sample:  Test202111092100001
      */
     private String outTradeNo;
     /**
      * 交易token
-     *
-     * @mock 20201112400101244339
+     * <p>
+     * sample:  20201112400101244339
      */
     private String tradeNo;
 
     /**
      * 交易状态
-     *
-     * @mock SUCCESS
+     * <p>
+     * sample:  SUCCESS
      */
     private String status;
 

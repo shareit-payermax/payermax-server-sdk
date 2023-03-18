@@ -16,8 +16,8 @@ public class PayoutQueryRequest extends BaseRequest<PayoutQueryResponse> {
     private static final long serialVersionUID = 8307443010191124381L;
     /**
      * 商户订单号【特殊可选-和交易订单号至少必输一个】
-     *
-     * @mock Test20211124000000039
+     * <p>
+     * sample:  Test20211124000000039
      */
     private String outTradeNo;
 

@@ -9,7 +9,6 @@ import com.payermax.sdk.resp.PayoutQueryResponse;
  *
  * @param
  * @author ctl
- * @return
  **/
 public class PayoutQueryRequest extends BaseRequest<PayoutQueryResponse> {
 

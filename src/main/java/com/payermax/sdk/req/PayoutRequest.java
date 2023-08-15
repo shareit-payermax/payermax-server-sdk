@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * @author raoxw
- * @date 2021/12/1 20:08
  **/
 public class PayoutRequest extends BaseRequest<PayoutResponse> implements Serializable {
     private static final long serialVersionUID = 6694416012345909439L;

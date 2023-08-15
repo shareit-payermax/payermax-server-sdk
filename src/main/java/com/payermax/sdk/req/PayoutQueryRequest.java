@@ -7,7 +7,6 @@ import com.payermax.sdk.resp.PayoutQueryResponse;
 /**
  * 交易查询
  *
- * @param
  * @author ctl
  **/
 public class PayoutQueryRequest extends BaseRequest<PayoutQueryResponse> {

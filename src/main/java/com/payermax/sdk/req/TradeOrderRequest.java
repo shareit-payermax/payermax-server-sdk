@@ -8,6 +8,21 @@ import java.util.List;
 
 public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implements Serializable {
     /**
+     * 优先交互模式
+     * Hosted_Checkout //  Direct_Payment
+     */
+    private String integrate;
+    /**
+     * 分账标识，Y：分账，N：不分账
+     * 默认不分账,Y大写
+     */
+    private String separateIndicate;
+    /**
+     * 分账参与方列表，最大支持10个参与方
+     * 校验在代码中进行，会有不同错误码逻辑
+     */
+    private List<SeparateAccountInfo> separateAccountInfo;
+    /**
      * 商户订单号
      */
     private String outTradeNo;
@@ -50,6 +65,26 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
      */
     private String userId;
 
+    private String referralCode;
+
+    /**
+     * 指定关单时间
+     */
+    private String expireTime;
+
+    /**
+     * 风控业务数据
+     */
+    private Object riskParams;
+
+    /**
+     * 请求终端类型
+     */
+    private String terminalType;
+    /**
+     * 操作系统类型. IOS；ANDROID
+     */
+    private String osType;
     /**
      * 服务端支付结果通知URL地址
      */
@@ -84,6 +119,44 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
      * 信用卡账单信息--【电商场景必填】
      */
     private BillingInfo billingInfo;
+
+    /**
+     * 二级商户信息
+     * 平台类商户需要上送子商户信息
+     * 非必输
+     */
+    private SubMerchant subMerchant;
+
+
+    public static class SubMerchant implements Serializable {
+
+        private static final long serialVersionUID = 6805974273464129119L;
+        /**
+         * 二级商户号
+         */
+        private String subMerchantNo;
+
+        /**
+         * 二级商户名
+         */
+        private String subMerchantName;
+
+        public String getSubMerchantNo() {
+            return subMerchantNo;
+        }
+
+        public void setSubMerchantNo(String subMerchantNo) {
+            this.subMerchantNo = subMerchantNo;
+        }
+
+        public String getSubMerchantName() {
+            return subMerchantName;
+        }
+
+        public void setSubMerchantName(String subMerchantName) {
+            this.subMerchantName = subMerchantName;
+        }
+    }
 
     @Override
     protected String getApiName() {
@@ -218,13 +291,95 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         this.billingInfo = billingInfo;
     }
 
+    public String getIntegrate() {
+        return integrate;
+    }
+
+    public void setIntegrate(String integrate) {
+        this.integrate = integrate;
+    }
+
+    public String getSeparateIndicate() {
+        return separateIndicate;
+    }
+
+    public void setSeparateIndicate(String separateIndicate) {
+        this.separateIndicate = separateIndicate;
+    }
+
+    public List<SeparateAccountInfo> getSeparateAccountInfo() {
+        return separateAccountInfo;
+    }
+
+    public void setSeparateAccountInfo(List<SeparateAccountInfo> separateAccountInfo) {
+        this.separateAccountInfo = separateAccountInfo;
+    }
+
+    public String getReferralCode() {
+        return referralCode;
+    }
+
+    public void setReferralCode(String referralCode) {
+        this.referralCode = referralCode;
+    }
+
+    public String getExpireTime() {
+        return expireTime;
+    }
+
+    public void setExpireTime(String expireTime) {
+        this.expireTime = expireTime;
+    }
+
+    public Object getRiskParams() {
+        return riskParams;
+    }
+
+    public void setRiskParams(Object riskParams) {
+        this.riskParams = riskParams;
+    }
+
+    public String getTerminalType() {
+        return terminalType;
+    }
+
+    public void setTerminalType(String terminalType) {
+        this.terminalType = terminalType;
+    }
+
+    public String getOsType() {
+        return osType;
+    }
+
+    public void setOsType(String osType) {
+        this.osType = osType;
+    }
+
+    public SubMerchant getSubMerchant() {
+        return subMerchant;
+    }
+
+    public void setSubMerchant(SubMerchant subMerchant) {
+        this.subMerchant = subMerchant;
+    }
+
     public static final class PaymentDetail implements Serializable {
 
         private static final long serialVersionUID = -7937394894543296555L;
+
+        /**
+         * 绑卡支付token
+         */
+        String paymentTokenID;
         /**
          * 支付方式（跟踪产品，将支付方式改为编码）
          */
+        @Deprecated
         private String paymentMethod;
+        /**
+         * 支付方式 新老版本统一字段，替换paymentMethod字段
+         */
+        private String paymentMethodType;
         /**
          * 目标机构（跟踪产品，将支付方式改为编码）
          */
@@ -239,7 +394,10 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          * 卡信息--【电商场景必填】
          */
         private CardInfo cardInfo;
-
+        /**
+         * 商户自主3DS信息
+         */
+        private Info3DSecure info3DSecure;
         /**
          * 商户用户信息
          */
@@ -283,6 +441,30 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
         public void setBuyerInfo(OutUserInfo buyerInfo) {
             this.buyerInfo = buyerInfo;
+        }
+
+        public String getPaymentTokenID() {
+            return paymentTokenID;
+        }
+
+        public void setPaymentTokenID(String paymentTokenID) {
+            this.paymentTokenID = paymentTokenID;
+        }
+
+        public String getPaymentMethodType() {
+            return paymentMethodType;
+        }
+
+        public void setPaymentMethodType(String paymentMethodType) {
+            this.paymentMethodType = paymentMethodType;
+        }
+
+        public Info3DSecure getInfo3DSecure() {
+            return info3DSecure;
+        }
+
+        public void setInfo3DSecure(Info3DSecure info3DSecure) {
+            this.info3DSecure = info3DSecure;
         }
     }
 
@@ -356,6 +538,15 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          * 卡cvv
          */
         private String cvv;
+        /**
+         * 动态3ds
+         * do3DS：发起3ds支付，不区分大小写
+         * no3DS：发起非3ds支付，不区分大小写
+         * 商户需要联系PayerMax的商务开通动态3ds，
+         * 开通后则根据商户传入的dynamic3DS字段判断该笔支付请求是否要发起3ds。
+         * 未传或传入其他值，由PayerMax判断是否发起3ds
+         */
+        private String dynamic3DS;
 
         public String getCardOrgType() {
             return cardOrgType;
@@ -411,6 +602,67 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
         public void setCvv(String cvv) {
             this.cvv = cvv;
+        }
+
+        public String getDynamic3DS() {
+            return dynamic3DS;
+        }
+
+        public void setDynamic3DS(String dynamic3DS) {
+            this.dynamic3DS = dynamic3DS;
+        }
+    }
+
+    public static final class Info3DSecure implements Serializable {
+
+        private String threeDSVersion;
+
+        private String eci;
+
+        private String cavv;
+
+        private String dsTransactionId;
+
+        private String xid;
+
+        public String getThreeDSVersion() {
+            return threeDSVersion;
+        }
+
+        public void setThreeDSVersion(String threeDSVersion) {
+            this.threeDSVersion = threeDSVersion;
+        }
+
+        public String getEci() {
+            return eci;
+        }
+
+        public void setEci(String eci) {
+            this.eci = eci;
+        }
+
+        public String getCavv() {
+            return cavv;
+        }
+
+        public void setCavv(String cavv) {
+            this.cavv = cavv;
+        }
+
+        public String getDsTransactionId() {
+            return dsTransactionId;
+        }
+
+        public void setDsTransactionId(String dsTransactionId) {
+            this.dsTransactionId = dsTransactionId;
+        }
+
+        public String getXid() {
+            return xid;
+        }
+
+        public void setXid(String xid) {
+            this.xid = xid;
         }
     }
 
@@ -673,6 +925,14 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
         /**
          * 用户证件号
          */
+        private String idNo;
+        /**
+         * 税类型
+         */
+        private String taxType;
+        /**
+         * 用户证件号
+         */
         private String taxNo;
         /**
          * 用户所在区域
@@ -686,6 +946,10 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          * 用户详细地址
          */
         private String address;
+        /**
+         * 邮编
+         */
+        private String zipCode;
         /**
          * 用户客户端ip
          */
@@ -789,6 +1053,30 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
         public void setUserAgent(String userAgent) {
             this.userAgent = userAgent;
+        }
+
+        public String getIdNo() {
+            return idNo;
+        }
+
+        public void setIdNo(String idNo) {
+            this.idNo = idNo;
+        }
+
+        public String getTaxType() {
+            return taxType;
+        }
+
+        public void setTaxType(String taxType) {
+            this.taxType = taxType;
+        }
+
+        public String getZipCode() {
+            return zipCode;
+        }
+
+        public void setZipCode(String zipCode) {
+            this.zipCode = zipCode;
         }
     }
 
@@ -939,6 +1227,35 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
 
         public void setZipCode(String zipCode) {
             this.zipCode = zipCode;
+        }
+    }
+
+    public static final class SeparateAccountInfo implements Serializable {
+        private static final long serialVersionUID = -7937394894543293512L;
+
+        /**
+         * 分账参与方
+         */
+        private String participantId;
+        /**
+         * 分账描述
+         */
+        private String separateAccountDesc;
+
+        public String getParticipantId() {
+            return participantId;
+        }
+
+        public void setParticipantId(String participantId) {
+            this.participantId = participantId;
+        }
+
+        public String getSeparateAccountDesc() {
+            return separateAccountDesc;
+        }
+
+        public void setSeparateAccountDesc(String separateAccountDesc) {
+            this.separateAccountDesc = separateAccountDesc;
         }
     }
 }

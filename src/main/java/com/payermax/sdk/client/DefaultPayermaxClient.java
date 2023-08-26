@@ -97,7 +97,11 @@ public class DefaultPayermaxClient implements PayermaxClient {
             }
             Request request = builder.build();
 
-            Response response = httpClient.newCall(request).execute();
+            OkHttpClient targetHttpClient = getCustomHttpClient(request);
+            if (targetHttpClient == null) {
+                targetHttpClient = httpClient;
+            }
+            Response response = targetHttpClient.newCall(request).execute();
             ResponseBody responseBody = response.body();
             if (responseBody == null) {
                 throw new PayermaxException(ErrorCodeEnum.INVOKE_ERROR);
@@ -155,5 +159,9 @@ public class DefaultPayermaxClient implements PayermaxClient {
 
     public OkHttpClient getHttpClient() {
         return httpClient;
+    }
+
+    protected OkHttpClient getCustomHttpClient(Request request){
+        return null;
     }
 }

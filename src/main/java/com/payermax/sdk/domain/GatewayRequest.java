@@ -13,8 +13,8 @@ public class GatewayRequest implements Serializable {
      * 格式为 yyyy-MM-dd'T'HH:mm:ss.SSSZ,  符合ISO 8601 规范，paymax会校验此时间和服务器的时间差不超过两分钟
      */
     private String requestTime;
+    private String version = "1.4";
     private String requestId;
-    private String version = "1.3";
     private String appId;
     private String merchantNo;
     private String spMerchantNo;

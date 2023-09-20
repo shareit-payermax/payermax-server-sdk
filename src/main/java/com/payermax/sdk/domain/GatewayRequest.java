@@ -14,6 +14,7 @@ public class GatewayRequest implements Serializable {
      */
     private String requestTime;
     private String version = "1.4";
+    private String requestId;
     private String appId;
     private String merchantNo;
     private String spMerchantNo;
@@ -26,6 +27,14 @@ public class GatewayRequest implements Serializable {
 
     public void setRequestTime(String requestTime) {
         this.requestTime = requestTime;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
     public String getVersion() {

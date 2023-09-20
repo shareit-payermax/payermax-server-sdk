@@ -35,6 +35,7 @@ public interface PayermaxClient {
      * @return json content
      */
     String send(String apiName, Object request, String merchantNo);
+
     String send(String apiName, Object request, MerchantConfig config);
 
     /**

@@ -40,12 +40,12 @@ public class DefaultPayermaxClient implements PayermaxClient {
     private static DefaultPayermaxClient INSTANCE;
 
 
-    private DefaultPayermaxClient(List<Interceptor> appInterceptors, List<Interceptor> networkInterceptors){
+    private DefaultPayermaxClient(List<Interceptor> appInterceptors, List<Interceptor> networkInterceptors) {
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
-        if(appInterceptors != null && appInterceptors.size() > 0) {
+        if (appInterceptors != null && appInterceptors.size() > 0) {
             appInterceptors.forEach(builder::addInterceptor);
         }
-        if(networkInterceptors != null && networkInterceptors.size() > 0) {
+        if (networkInterceptors != null && networkInterceptors.size() > 0) {
             networkInterceptors.forEach(builder::addNetworkInterceptor);
         }
         httpClient = builder
@@ -58,6 +58,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
     public synchronized static DefaultPayermaxClient getInstance() {
         return getInstance(null, null);
     }
+
     public synchronized static DefaultPayermaxClient getInstance(List<Interceptor> appInterceptors) {
         return getInstance(appInterceptors, null);
     }
@@ -115,7 +116,7 @@ public class DefaultPayermaxClient implements PayermaxClient {
             builder.header(HEADER_SIGN, calcSign(config, reqString)).header(HEADER_SDK_VER, SDK_VER)
                     .url(this.baseUrl.concat("/").concat(apiName))
                     .post(requestBody);
-            if(StringUtils.isNotBlank(config.getMerchantAuthToken())){
+            if (StringUtils.isNotBlank(config.getMerchantAuthToken())) {
                 builder.header(HEADER_MERCHANT_AUTH_TOKEN, config.getMerchantAuthToken());
             }
             Request request = builder.build();
@@ -158,8 +159,8 @@ public class DefaultPayermaxClient implements PayermaxClient {
         busReq.setMerchantNo(config.getMerchantNo());
         busReq.setAppId(config.getAppId());
         busReq.setRequestTime(DateFormatUtils.format(new Date(), DATE_FORMAT));
-        if(StringUtils.isNotBlank(config.getSpMerchantNo())){
-             busReq.setSpMerchantNo(config.getSpMerchantNo());
+        if (StringUtils.isNotBlank(config.getSpMerchantNo())) {
+            busReq.setSpMerchantNo(config.getSpMerchantNo());
         }
 
         return JSON.toJSONString(busReq);

@@ -125,6 +125,7 @@ public class MerchantConfig {
             this.checkSign = checkSign;
             return this;
         }
+
         public Builder spMerchantNo(String spMerchantNo) {
             this.spMerchantNo = spMerchantNo;
             return this;

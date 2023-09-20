@@ -151,6 +151,9 @@ public class DefaultPayermaxClient implements PayermaxClient {
 
     private String buildReqString(MerchantConfig config, Object busData) {
         GatewayRequest busReq = new GatewayRequest();
+        if (StringUtils.isNotBlank(config.getApiVersion())) {
+            busReq.setVersion(config.getApiVersion());
+        }
         busReq.setData(busData);
         busReq.setMerchantNo(config.getMerchantNo());
         busReq.setAppId(config.getAppId());

@@ -19,6 +19,16 @@ public class MerchantConfig {
 
     private boolean needCheckSign = true;
 
+    private String apiVersion;
+
+    public String getApiVersion() {
+        return apiVersion;
+    }
+
+    public void setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
+    }
+
     public String getAppId() {
         return appId;
     }

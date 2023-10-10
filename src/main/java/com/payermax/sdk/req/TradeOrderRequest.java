@@ -696,6 +696,16 @@ public class TradeOrderRequest extends BaseRequest<TradePayOrderResponse> implem
          */
         private String showUrl;
 
+        private String goodsCategory;
+
+        public String getGoodsCategory() {
+            return goodsCategory;
+        }
+
+        public void setGoodsCategory(String goodsCategory) {
+            this.goodsCategory = goodsCategory;
+        }
+
         public String getGoodsId() {
             return goodsId;
         }

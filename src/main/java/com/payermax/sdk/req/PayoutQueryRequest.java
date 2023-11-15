@@ -3,13 +3,15 @@ package com.payermax.sdk.req;
 import com.payermax.sdk.api.BaseRequest;
 import com.payermax.sdk.resp.PayoutQueryResponse;
 
+import java.io.Serializable;
+
 
 /**
  * 交易查询
  *
  * @author ctl
  **/
-public class PayoutQueryRequest extends BaseRequest<PayoutQueryResponse> {
+public class PayoutQueryRequest extends BaseRequest<PayoutQueryResponse> implements Serializable {
 
     private static final long serialVersionUID = 8307443010191124381L;
     /**

@@ -1,7 +1,7 @@
 package com.payermax.sdk.req;
 
 import com.payermax.sdk.api.BaseRequest;
-import com.payermax.sdk.resp.ApplyTokenResponse;
+import com.payermax.sdk.resp.OrderCloseResponse;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @create: 2023-08-23 21:37
  **/
 
-public class OrderCloseRequest extends BaseRequest<ApplyTokenResponse> implements Serializable {
+public class OrderCloseRequest extends BaseRequest<OrderCloseResponse> implements Serializable {
     private static final long serialVersionUID = 639088064924524423L;
 
     private String outTradeNo;

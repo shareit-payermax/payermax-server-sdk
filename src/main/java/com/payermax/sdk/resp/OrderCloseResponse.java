@@ -3,9 +3,9 @@ package com.payermax.sdk.resp;
 import java.io.Serializable;
 
 /**
- * @description: 商户交易关单响应体
- * @author: WangTao
- * @create: 2023-08-23 21:31
+ * 商户交易关单响应体
+ * author: WangTao
+ * create: 2023-08-23 21:31
  **/
 
 public class OrderCloseResponse implements Serializable {

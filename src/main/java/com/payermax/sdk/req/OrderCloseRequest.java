@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 
 /**
- * @description: 商户交易关单请求体
- * @author: WangTao
- * @create: 2023-08-23 21:37
+ * description: 商户交易关单请求体
+ * author: WangTao
+ * create: 2023-08-23 21:37
  **/
 
 public class OrderCloseRequest extends BaseRequest<OrderCloseResponse> implements Serializable {
